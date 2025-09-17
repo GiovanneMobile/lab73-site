@@ -1,36 +1,39 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Services.css';
 
 const Services: React.FC = () => {
+  const { t } = useLanguage();
+  
   const services = [
     {
-      title: 'Recording',
-      description: 'Professional multi-track recording with state-of-the-art equipment and acoustically treated rooms.',
+      title: t('services.recording.title'),
+      description: t('services.recording.description'),
       icon: '🎤'
     },
     {
-      title: 'Mixing',
-      description: 'Expert mixing services to bring balance, clarity, and depth to your musical compositions.',
+      title: t('services.mixing.title'),
+      description: t('services.mixing.description'),
       icon: '🎛️'
     },
     {
-      title: 'Mastering',
-      description: 'Final polish and optimization for your tracks to ensure they sound great on any playback system.',
+      title: t('services.mastering.title'),
+      description: t('services.mastering.description'),
       icon: '🎚️'
     },
     {
-      title: 'Production',
-      description: 'Full music production services from arrangement to final delivery, tailored to your artistic vision.',
+      title: t('services.production.title'),
+      description: t('services.production.description'),
       icon: '🎵'
     },
     {
-      title: 'Vocal Coaching',
-      description: 'Professional vocal coaching to help artists improve their technique and performance.',
+      title: t('services.coaching.title'),
+      description: t('services.coaching.description'),
       icon: '🎙️'
     },
     {
-      title: 'Live Sessions',
-      description: 'Capture the energy of live performances with our multi-camera and audio recording setup.',
+      title: t('services.live.title'),
+      description: t('services.live.description'),
       icon: '📹'
     }
   ];
@@ -39,8 +42,8 @@ const Services: React.FC = () => {
     <section id="services" className="services section">
       <div className="container">
         <div className="section-header">
-          <h2>Our Services</h2>
-          <p>Professional audio services tailored to bring your musical vision to life</p>
+          <h2>{t('services.title')}</h2>
+          <p>{t('services.subtitle')}</p>
         </div>
         
         <div className="services-grid">

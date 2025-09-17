@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 import './Header.css';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,21 +35,24 @@ const Header: React.FC = () => {
           
           <nav className={`nav ${isMobileMenuOpen ? 'nav-open' : ''}`}>
             <ul>
-              <li><button onClick={() => scrollToSection('hero')}>Home</button></li>
-              <li><button onClick={() => scrollToSection('services')}>Services</button></li>
-              <li><button onClick={() => scrollToSection('about')}>About</button></li>
-              <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
+              <li><button onClick={() => scrollToSection('hero')}>{t('nav.home')}</button></li>
+              <li><button onClick={() => scrollToSection('services')}>{t('nav.services')}</button></li>
+              <li><button onClick={() => scrollToSection('about')}>{t('nav.about')}</button></li>
+              <li><button onClick={() => scrollToSection('contact')}>{t('nav.contact')}</button></li>
             </ul>
           </nav>
 
-          <button 
-            className="mobile-menu-toggle"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <div className="header-actions">
+            <LanguageSelector />
+            <button 
+              className="mobile-menu-toggle"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
       </div>
     </header>

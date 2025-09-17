@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Contact.css';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +22,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
     // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
+    alert(t('contact.form.success'));
     setFormData({ name: '', email: '', service: '', message: '' });
   };
 
@@ -28,8 +30,8 @@ const Contact: React.FC = () => {
     <section id="contact" className="contact section">
       <div className="container">
         <div className="section-header">
-          <h2>Get In Touch</h2>
-          <p>Ready to create something amazing? Let's start the conversation.</p>
+          <h2>{t('contact.title')}</h2>
+          <p>{t('contact.subtitle')}</p>
         </div>
 
         <div className="contact-content">
@@ -37,33 +39,33 @@ const Contact: React.FC = () => {
             <div className="contact-item">
               <div className="contact-icon">📍</div>
               <div className="contact-details">
-                <h4>Studio Location</h4>
-                <p>123 Music Street<br />Sound City, SC 12345</p>
+                <h4>{t('contact.info.location.title')}</h4>
+                <p dangerouslySetInnerHTML={{ __html: t('contact.info.location.address') }} />
               </div>
             </div>
 
             <div className="contact-item">
               <div className="contact-icon">📞</div>
               <div className="contact-details">
-                <h4>Phone</h4>
-                <p>+1 (555) 123-4567</p>
+                <h4>{t('contact.info.phone.title')}</h4>
+                <p>{t('contact.info.phone.number')}</p>
               </div>
             </div>
 
             <div className="contact-item">
               <div className="contact-icon">✉️</div>
               <div className="contact-details">
-                <h4>Email</h4>
-                <p>hello@lab73studio.com</p>
+                <h4>{t('contact.info.email.title')}</h4>
+                <p>{t('contact.info.email.address')}</p>
               </div>
             </div>
 
             <div className="contact-item">
               <div className="contact-icon">🕒</div>
               <div className="contact-details">
-                <h4>Studio Hours</h4>
-                <p>Mon - Fri: 9:00 AM - 10:00 PM<br />
-                   Sat - Sun: 10:00 AM - 8:00 PM</p>
+                <h4>{t('contact.info.hours.title')}</h4>
+                <p>{t('contact.info.hours.weekdays')}<br />
+                   {t('contact.info.hours.weekends')}</p>
               </div>
             </div>
           </div>
@@ -73,7 +75,7 @@ const Contact: React.FC = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder={t('contact.form.name')}
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -84,7 +86,7 @@ const Contact: React.FC = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder={t('contact.form.email')}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -98,20 +100,20 @@ const Contact: React.FC = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select a Service</option>
-                <option value="recording">Recording</option>
-                <option value="mixing">Mixing</option>
-                <option value="mastering">Mastering</option>
-                <option value="production">Production</option>
-                <option value="coaching">Vocal Coaching</option>
-                <option value="live">Live Sessions</option>
+                <option value="">{t('contact.form.service')}</option>
+                <option value="recording">{t('contact.form.service.recording')}</option>
+                <option value="mixing">{t('contact.form.service.mixing')}</option>
+                <option value="mastering">{t('contact.form.service.mastering')}</option>
+                <option value="production">{t('contact.form.service.production')}</option>
+                <option value="coaching">{t('contact.form.service.coaching')}</option>
+                <option value="live">{t('contact.form.service.live')}</option>
               </select>
             </div>
 
             <div className="form-group">
               <textarea
                 name="message"
-                placeholder="Tell us about your project..."
+                placeholder={t('contact.form.message')}
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
@@ -120,7 +122,7 @@ const Contact: React.FC = () => {
             </div>
 
             <button type="submit" className="btn btn-full">
-              Send Message
+              {t('contact.form.submit')}
             </button>
           </form>
         </div>

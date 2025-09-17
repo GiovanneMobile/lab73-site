@@ -1,7 +1,10 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Hero.css';
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
+  
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -15,18 +18,16 @@ const Hero: React.FC = () => {
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
-            <h1>Professional Music Recording Studio</h1>
+            <h1>{t('hero.title')}</h1>
             <p>
-              Welcome to Lab 73, where creativity meets technology. Our state-of-the-art 
-              recording studio provides musicians and artists with the perfect environment 
-              to bring their musical vision to life.
+              {t('hero.description')}
             </p>
             <div className="hero-buttons">
               <button className="btn" onClick={scrollToContact}>
-                Book a Session
+                {t('hero.bookSession')}
               </button>
               <a href="#services" className="btn btn-outline">
-                Our Services
+                {t('hero.ourServices')}
               </a>
             </div>
           </div>
