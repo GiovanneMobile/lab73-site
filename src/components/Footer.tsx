@@ -1,8 +1,10 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import './Footer.css';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -18,7 +20,7 @@ const Footer: React.FC = () => {
           <div className="footer-section">
             <div className="footer-logo">
               <h3>LAB 73</h3>
-              <p>Professional Music Recording Studio</p>
+              <p>{t('footer.logo.subtitle')}</p>
             </div>
             <div className="social-links">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
@@ -29,31 +31,31 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="footer-section">
-            <h4>Quick Links</h4>
+            <h4>{t('footer.quickLinks')}</h4>
             <ul>
-              <li><button onClick={() => scrollToSection('hero')}>Home</button></li>
-              <li><button onClick={() => scrollToSection('services')}>Services</button></li>
-              <li><button onClick={() => scrollToSection('about')}>About</button></li>
-              <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
+              <li><button onClick={() => scrollToSection('hero')}>{t('nav.home')}</button></li>
+              <li><button onClick={() => scrollToSection('services')}>{t('nav.services')}</button></li>
+              <li><button onClick={() => scrollToSection('about')}>{t('nav.about')}</button></li>
+              <li><button onClick={() => scrollToSection('contact')}>{t('nav.contact')}</button></li>
             </ul>
           </div>
 
           <div className="footer-section">
-            <h4>Services</h4>
+            <h4>{t('footer.services')}</h4>
             <ul>
-              <li><button type="button">Recording</button></li>
-              <li><button type="button">Mixing</button></li>
-              <li><button type="button">Mastering</button></li>
-              <li><button type="button">Production</button></li>
+              <li><button type="button">{t('services.recording.title')}</button></li>
+              <li><button type="button">{t('services.mixing.title')}</button></li>
+              <li><button type="button">{t('services.mastering.title')}</button></li>
+              <li><button type="button">{t('services.production.title')}</button></li>
             </ul>
           </div>
 
           <div className="footer-section">
-            <h4>Contact Info</h4>
+            <h4>{t('footer.contactInfo')}</h4>
             <div className="contact-info">
-              <p>📍 123 Music Street, Sound City</p>
-              <p>📞 +1 (555) 123-4567</p>
-              <p>✉️ hello@lab73studio.com</p>
+              <p>📍 {t('footer.address')}</p>
+              <p>📞 {t('contact.info.phone.number')}</p>
+              <p>✉️ {t('contact.info.email.address')}</p>
             </div>
           </div>
         </div>
@@ -61,10 +63,10 @@ const Footer: React.FC = () => {
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-bottom-content">
-            <p>&copy; {currentYear} Lab 73 Studio. All rights reserved.</p>
+            <p>&copy; {currentYear} {t('footer.copyright')}</p>
             <div className="footer-bottom-links">
-              <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-              <a href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+              <a href="/privacy" target="_blank" rel="noopener noreferrer">{t('footer.privacy')}</a>
+              <a href="/terms" target="_blank" rel="noopener noreferrer">{t('footer.terms')}</a>
             </div>
           </div>
         </div>

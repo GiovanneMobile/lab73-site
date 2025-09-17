@@ -1,12 +1,15 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import './About.css';
 
 const About: React.FC = () => {
+  const { t } = useLanguage();
+  
   const stats = [
-    { number: '500+', label: 'Projects Completed' },
-    { number: '10+', label: 'Years Experience' },
-    { number: '50+', label: 'Happy Artists' },
-    { number: '24/7', label: 'Support Available' }
+    { number: '500+', label: t('about.stats.projects') },
+    { number: '10+', label: t('about.stats.experience') },
+    { number: '50+', label: t('about.stats.artists') },
+    { number: '24/7', label: t('about.stats.support') }
   ];
 
   return (
@@ -15,23 +18,17 @@ const About: React.FC = () => {
         <div className="about-content">
           <div className="about-text">
             <div className="section-header">
-              <h2>About Lab 73</h2>
-              <p>Where Music Meets Innovation</p>
+              <h2>{t('about.title')}</h2>
+              <p>{t('about.subtitle')}</p>
             </div>
             
             <div className="about-description">
               <p>
-                Lab 73 is more than just a recording studio – we're a creative sanctuary where 
-                artists can explore, experiment, and perfect their craft. Our state-of-the-art 
-                facility combines cutting-edge technology with an inspiring environment designed 
-                to bring out the best in every musician.
+                {t('about.description1')}
               </p>
               
               <p>
-                Founded by passionate music professionals, we understand the nuances of great 
-                sound and the importance of creating the right atmosphere for artistic expression. 
-                Our team of experienced engineers and producers work closely with each artist to 
-                ensure their vision is realized to its fullest potential.
+                {t('about.description2')}
               </p>
             </div>
 
@@ -50,32 +47,32 @@ const About: React.FC = () => {
               <div className="feature-item">
                 <div className="feature-icon">🎹</div>
                 <div className="feature-content">
-                  <h4>Premium Equipment</h4>
-                  <p>Industry-standard mixing consoles, monitors, and instruments</p>
+                  <h4>{t('about.features.equipment.title')}</h4>
+                  <p>{t('about.features.equipment.description')}</p>
                 </div>
               </div>
               
               <div className="feature-item">
                 <div className="feature-icon">🏠</div>
                 <div className="feature-content">
-                  <h4>Acoustically Treated Rooms</h4>
-                  <p>Multiple recording spaces optimized for different instruments</p>
+                  <h4>{t('about.features.rooms.title')}</h4>
+                  <p>{t('about.features.rooms.description')}</p>
                 </div>
               </div>
               
               <div className="feature-item">
                 <div className="feature-icon">👥</div>
                 <div className="feature-content">
-                  <h4>Expert Team</h4>
-                  <p>Experienced engineers and producers dedicated to your success</p>
+                  <h4>{t('about.features.team.title')}</h4>
+                  <p>{t('about.features.team.description')}</p>
                 </div>
               </div>
               
               <div className="feature-item">
                 <div className="feature-icon">⚡</div>
                 <div className="feature-content">
-                  <h4>Fast Turnaround</h4>
-                  <p>Efficient workflow to meet your deadlines without compromising quality</p>
+                  <h4>{t('about.features.turnaround.title')}</h4>
+                  <p>{t('about.features.turnaround.description')}</p>
                 </div>
               </div>
             </div>
