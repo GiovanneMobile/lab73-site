@@ -5,7 +5,7 @@ import App from './App';
 test('renders Lab 73 studio site', () => {
   render(<App />);
   // Test for Portuguese title (default language)
-  const heroTitle = screen.getByRole('heading', { name: 'Estúdio Profissional de Gravação Musical' });
+  const heroTitle = screen.getByRole('heading', { name: 'Lab 73 - Espaço para Experimentação Musical' });
   expect(heroTitle).toBeInTheDocument();
   
   // Test that language selector is present
