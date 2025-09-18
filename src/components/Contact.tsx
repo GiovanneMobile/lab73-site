@@ -74,7 +74,7 @@ const Contact: React.FC = () => {
           <p>{t('contact.subtitle')}</p>
         </div>
 
-        <div className="contact-content">
+        <div className="contact-content form-only">
           {/* Contact info removed during construction phase 
           <div className="contact-info">
             <div className="contact-item">
