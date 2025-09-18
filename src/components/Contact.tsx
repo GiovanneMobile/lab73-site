@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { useLanguage } from '../contexts/LanguageContext';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact: React.FC = () => {
@@ -12,6 +13,7 @@ const Contact: React.FC = () => {
     service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -20,12 +22,48 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    alert(t('contact.form.success'));
-    setFormData({ name: '', email: '', service: '', message: '' });
+    
+    // Check if EmailJS is properly configured
+    if (!process.env.REACT_APP_EMAILJS_SERVICE_ID || 
+        !process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 
+        !process.env.REACT_APP_EMAILJS_PUBLIC_KEY) {
+      console.warn('EmailJS not configured. Form data would be:', formData);
+      alert(t('contact.form.success'));
+      setFormData({ name: '', email: '', service: '', message: '' });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Prepare template params for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        service: formData.service,
+        message: formData.message,
+        to_name: 'Lab 73 Studio', // You can customize this
+      };
+      
+      // Send email via EmailJS
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+      
+      alert(t('contact.form.success'));
+      setFormData({ name: '', email: '', service: '', message: '' });
+      
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert(t('contact.form.error'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,8 +169,8 @@ const Contact: React.FC = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className="btn btn-full">
-              {t('contact.form.submit')}
+            <button type="submit" className="btn btn-full" disabled={isSubmitting}>
+              {isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
             </button>
           </form>
         </div>

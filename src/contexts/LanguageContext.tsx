@@ -20,7 +20,7 @@ type TranslationKey =
   | 'about.features.team.title' | 'about.features.team.description'
   | 'about.features.turnaround.title' | 'about.features.turnaround.description'
   | 'contact.title' | 'contact.subtitle'
-  | 'contact.form.name' | 'contact.form.email' | 'contact.form.service' | 'contact.form.message' | 'contact.form.submit' | 'contact.form.success'
+  | 'contact.form.name' | 'contact.form.email' | 'contact.form.service' | 'contact.form.message' | 'contact.form.submit' | 'contact.form.sending' | 'contact.form.success' | 'contact.form.error'
   | 'contact.form.service.recording' | 'contact.form.service.mixing' | 'contact.form.service.mastering' | 'contact.form.service.production' | 'contact.form.service.coaching' | 'contact.form.service.live'
   | 'contact.info.location.title' | 'contact.info.location.address'
   | 'contact.info.phone.title' | 'contact.info.phone.number'
@@ -102,7 +102,9 @@ const translations: Record<Language, Translations> = {
     'contact.form.service.live': 'Sessões Ao Vivo',
     'contact.form.message': 'Conte-nos sobre seu projeto...',
     'contact.form.submit': 'Enviar Mensagem',
+    'contact.form.sending': 'Enviando...',
     'contact.form.success': 'Obrigado pela sua mensagem! Entraremos em contato em breve.',
+    'contact.form.error': 'Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente.',
     'contact.info.location.title': 'Localização do Estúdio',
     'contact.info.location.address': '123 Music Street<br />Sound City, SC 12345',
     'contact.info.phone.title': 'Telefone',
@@ -184,7 +186,9 @@ const translations: Record<Language, Translations> = {
     'contact.form.service.live': 'Live Sessions',
     'contact.form.message': 'Tell us about your project...',
     'contact.form.submit': 'Send Message',
+    'contact.form.sending': 'Sending...',
     'contact.form.success': 'Thank you for your message! We\'ll get back to you soon.',
+    'contact.form.error': 'Error sending message. Please try again or contact us directly.',
     'contact.info.location.title': 'Studio Location',
     'contact.info.location.address': '123 Music Street<br />Sound City, SC 12345',
     'contact.info.phone.title': 'Phone',
