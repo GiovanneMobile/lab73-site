@@ -27,7 +27,8 @@ type TranslationKey =
   | 'contact.info.email.title' | 'contact.info.email.address'
   | 'contact.info.hours.title' | 'contact.info.hours.weekdays' | 'contact.info.hours.weekends'
   | 'footer.logo.subtitle' | 'footer.quickLinks' | 'footer.services' | 'footer.contactInfo'
-  | 'footer.address' | 'footer.copyright' | 'footer.privacy' | 'footer.terms';
+  | 'footer.address' | 'footer.copyright' | 'footer.privacy' | 'footer.terms'
+  | 'construction.title' | 'construction.message' | 'construction.contact';
 
 type Translations = Record<TranslationKey, string>;
 
@@ -124,6 +125,11 @@ const translations: Record<Language, Translations> = {
     'footer.copyright': 'Lab 73 Studio. Todos os direitos reservados.',
     'footer.privacy': 'Política de Privacidade',
     'footer.terms': 'Termos de Serviço',
+
+    // Under construction section
+    'construction.title': 'Site em Construção',
+    'construction.message': 'Estamos trabalhando para trazer uma experiência incrível para você. O Lab 73 está sendo desenvolvido e em breve estará disponível com todos os nossos serviços.',
+    'construction.contact': 'Enquanto isso, entre em contato conosco!',
   },
   en: {
     // Header
@@ -208,6 +214,11 @@ const translations: Record<Language, Translations> = {
     'footer.copyright': 'Lab 73 Studio. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
+
+    // Under construction section
+    'construction.title': 'Site Under Construction',
+    'construction.message': 'We are working to bring you an amazing experience. Lab 73 is being developed and will soon be available with all our services.',
+    'construction.contact': 'In the meantime, get in touch with us!',
   }
 };
 

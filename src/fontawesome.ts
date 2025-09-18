@@ -14,7 +14,8 @@ import {
   faMapMarkerAlt,
   faPhone,
   faEnvelope,
-  faClock
+  faClock,
+  faCog
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faInstagram,
@@ -44,6 +45,9 @@ library.add(
   faPhone,           // Phone
   faEnvelope,        // Email
   faClock,           // Hours
+  
+  // Under construction
+  faCog,             // Tools/Construction
   
   // Social media icons
   faInstagram,
