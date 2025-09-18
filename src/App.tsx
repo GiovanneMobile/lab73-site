@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './fontawesome';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Hero from './components/Hero';

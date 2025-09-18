@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { useLanguage } from '../contexts/LanguageContext';
 import './Footer.css';
 
@@ -23,10 +25,18 @@ const Footer: React.FC = () => {
               <p>{t('footer.logo.subtitle')}</p>
             </div>
             <div className="social-links">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">📺</a>
-              <a href="https://soundcloud.com" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">🎵</a>
-              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify">🎧</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FontAwesomeIcon icon={['fab', 'instagram']} />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <FontAwesomeIcon icon={['fab', 'youtube']} />
+              </a>
+              <a href="https://soundcloud.com" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
+                <FontAwesomeIcon icon={['fab', 'soundcloud']} />
+              </a>
+              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                <FontAwesomeIcon icon={['fab', 'spotify']} />
+              </a>
             </div>
           </div>
 
@@ -53,9 +63,15 @@ const Footer: React.FC = () => {
           <div className="footer-section">
             <h4>{t('footer.contactInfo')}</h4>
             <div className="contact-info">
-              <p>📍 {t('footer.address')}</p>
-              <p>📞 {t('contact.info.phone.number')}</p>
-              <p>✉️ {t('contact.info.email.address')}</p>
+              <p>
+                <FontAwesomeIcon icon={'map-marker-alt' as IconName} /> {t('footer.address')}
+              </p>
+              <p>
+                <FontAwesomeIcon icon={'phone' as IconName} /> {t('contact.info.phone.number')}
+              </p>
+              <p>
+                <FontAwesomeIcon icon={'envelope' as IconName} /> {t('contact.info.email.address')}
+              </p>
             </div>
           </div>
         </div>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { useLanguage } from '../contexts/LanguageContext';
 import './Contact.css';
 
@@ -37,7 +39,9 @@ const Contact: React.FC = () => {
         <div className="contact-content">
           <div className="contact-info">
             <div className="contact-item">
-              <div className="contact-icon">📍</div>
+              <div className="contact-icon">
+                <FontAwesomeIcon icon={'map-marker-alt' as IconName} />
+              </div>
               <div className="contact-details">
                 <h4>{t('contact.info.location.title')}</h4>
                 <p dangerouslySetInnerHTML={{ __html: t('contact.info.location.address') }} />
@@ -45,7 +49,9 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">📞</div>
+              <div className="contact-icon">
+                <FontAwesomeIcon icon={'phone' as IconName} />
+              </div>
               <div className="contact-details">
                 <h4>{t('contact.info.phone.title')}</h4>
                 <p>{t('contact.info.phone.number')}</p>
@@ -53,7 +59,9 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">✉️</div>
+              <div className="contact-icon">
+                <FontAwesomeIcon icon={'envelope' as IconName} />
+              </div>
               <div className="contact-details">
                 <h4>{t('contact.info.email.title')}</h4>
                 <p>{t('contact.info.email.address')}</p>
@@ -61,7 +69,9 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">🕒</div>
+              <div className="contact-icon">
+                <FontAwesomeIcon icon={'clock' as IconName} />
+              </div>
               <div className="contact-details">
                 <h4>{t('contact.info.hours.title')}</h4>
                 <p>{t('contact.info.hours.weekdays')}<br />
