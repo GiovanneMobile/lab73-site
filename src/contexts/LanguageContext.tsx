@@ -49,8 +49,8 @@ const translations: Record<Language, Translations> = {
     'nav.contact': 'Contato',
 
     // Hero section
-    'hero.title': 'Estúdio Profissional de Gravação Musical',
-    'hero.description': 'Bem-vindo ao Lab 73, onde a criatividade encontra a tecnologia. Nosso estúdio de gravação de última geração oferece aos músicos e artistas o ambiente perfeito para dar vida à sua visão musical.',
+    'hero.title': 'Lab 73 - Espaço para Experimentação Musical',
+    'hero.description': 'Bem-vindo ao Lab 73, onde a criatividade encontra a experimentação. Um espaço inovador em desenvolvimento, dedicado a ensaios, gravações e descobertas musicais. Aqui, todos estão sempre aprendendo e se desenvolvendo.',
     'hero.bookSession': 'Agendar Sessão',
     'hero.ourServices': 'Nossos Serviços',
 
@@ -72,9 +72,9 @@ const translations: Record<Language, Translations> = {
 
     // About section
     'about.title': 'Sobre o Lab 73',
-    'about.subtitle': 'Onde a Música Encontra a Inovação',
-    'about.description1': 'O Lab 73 é mais que um estúdio de gravação – somos um santuário criativo onde artistas podem explorar, experimentar e aperfeiçoar seu talento. Nossa instalação de última geração combina tecnologia de ponta com um ambiente inspirador projetado para extrair o melhor de cada músico.',
-    'about.description2': 'Fundado por profissionais apaixonados pela música, entendemos as nuances do som excelente e a importância de criar a atmosfera certa para expressão artística. Nossa equipe de engenheiros e produtores experientes trabalha de perto com cada artista para garantir que sua visão seja realizada em todo seu potencial.',
+    'about.subtitle': 'Onde a Música Encontra a Experimentação',
+    'about.description1': 'O Lab 73 é um espaço experimental em desenvolvimento dedicado à exploração musical. Ainda não inaugurado como estúdio profissional, é um laboratório criativo onde artistas podem ensaiar, gravar e experimentar. Nossa proposta é criar um ambiente para novas experiências musicais.',
+    'about.description2': 'Como o nome sugere, é um Lab - um lugar onde todos estarão sempre se desenvolvendo e aprendendo algo novo. Nossa visão é proporcionar um espaço para além de ensaios e gravações, focando em experimentações e descobertas musicais que enriquecem a jornada artística de cada pessoa.',
     'about.stats.projects': 'Projetos Completos',
     'about.stats.experience': 'Anos de Experiência',
     'about.stats.artists': 'Artistas Satisfeitos',
@@ -114,7 +114,7 @@ const translations: Record<Language, Translations> = {
     'contact.info.hours.weekends': 'Sábado - Domingo: 10:00 - 20:00',
 
     // Footer section
-    'footer.logo.subtitle': 'Estúdio Profissional de Gravação Musical',
+    'footer.logo.subtitle': 'Espaço Experimental para Música e Criatividade',
     'footer.quickLinks': 'Links Rápidos',
     'footer.services': 'Serviços',
     'footer.contactInfo': 'Informações de Contato',
@@ -131,8 +131,8 @@ const translations: Record<Language, Translations> = {
     'nav.contact': 'Contact',
 
     // Hero section
-    'hero.title': 'Professional Music Recording Studio',
-    'hero.description': 'Welcome to Lab 73, where creativity meets technology. Our state-of-the-art recording studio provides musicians and artists with the perfect environment to bring their musical vision to life.',
+    'hero.title': 'Lab 73 - Space for Musical Experimentation',
+    'hero.description': 'Welcome to Lab 73, where creativity meets experimentation. An innovative developing space dedicated to rehearsals, recordings, and musical discoveries. Here, everyone is always learning and developing.',
     'hero.bookSession': 'Book a Session',
     'hero.ourServices': 'Our Services',
 
@@ -154,9 +154,9 @@ const translations: Record<Language, Translations> = {
 
     // About section
     'about.title': 'About Lab 73',
-    'about.subtitle': 'Where Music Meets Innovation',
-    'about.description1': 'Lab 73 is more than just a recording studio – we\'re a creative sanctuary where artists can explore, experiment, and perfect their craft. Our state-of-the-art facility combines cutting-edge technology with an inspiring environment designed to bring out the best in every musician.',
-    'about.description2': 'Founded by passionate music professionals, we understand the nuances of great sound and the importance of creating the right atmosphere for artistic expression. Our team of experienced engineers and producers work closely with each artist to ensure their vision is realized to its fullest potential.',
+    'about.subtitle': 'Where Music Meets Experimentation',
+    'about.description1': 'Lab 73 is an experimental space in development dedicated to musical exploration. Not yet inaugurated as a professional studio, it\'s a creative laboratory where artists can rehearse, record, and experiment. Our proposal is to create an environment for new musical experiences.',
+    'about.description2': 'As the name suggests, it\'s a Lab - a place where everyone will always be developing and learning something new. Our vision is to provide a space beyond rehearsals and recordings, focusing on experimentation and musical discoveries that enrich each person\'s artistic journey.',
     'about.stats.projects': 'Projects Completed',
     'about.stats.experience': 'Years Experience',
     'about.stats.artists': 'Happy Artists',
@@ -196,7 +196,7 @@ const translations: Record<Language, Translations> = {
     'contact.info.hours.weekends': 'Saturday - Sunday: 10:00 AM - 8:00 PM',
 
     // Footer section
-    'footer.logo.subtitle': 'Professional Music Recording Studio',
+    'footer.logo.subtitle': 'Experimental Space for Music and Creativity',
     'footer.quickLinks': 'Quick Links',
     'footer.services': 'Services',
     'footer.contactInfo': 'Contact Info',
