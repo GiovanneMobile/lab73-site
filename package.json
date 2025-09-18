@@ -1,7 +1,7 @@
 {
   "name": "lab73-site",
   "version": "0.1.0",
-  "homepage": "https://lab73.com.br",
+  "homepage": "https://giovannemobile.github.io/lab73-site",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",
