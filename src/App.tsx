@@ -2,23 +2,13 @@ import React from 'react';
 import './App.css';
 import './fontawesome';
 import { LanguageProvider } from './contexts/LanguageContext';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import UnderConstruction from './components/UnderConstruction';
 
 function App() {
   return (
     <LanguageProvider>
       <div className="App">
-        <Header />
-        <Hero />
-        <Services />
-        <About />
-        <Contact />
-        <Footer />
+        <UnderConstruction />
       </div>
     </LanguageProvider>
   );

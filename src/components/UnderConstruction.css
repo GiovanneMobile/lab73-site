@@ -1,0 +1,108 @@
+.under-construction {
+  min-height: 100vh;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.construction-header {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 1rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.construction-header .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.construction-header .logo h1 {
+  color: #ff6b35;
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.construction-header .header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.construction-content {
+  padding: 6rem 0 4rem;
+  text-align: center;
+}
+
+.construction-message {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.construction-icon {
+  font-size: 4rem;
+  color: #ff6b35;
+  margin-bottom: 2rem;
+}
+
+.construction-message h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.construction-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.construction-contact-text {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .construction-content {
+    padding: 4rem 0 2rem;
+  }
+  
+  .construction-message h1 {
+    font-size: 2.5rem;
+  }
+  
+  .construction-icon {
+    font-size: 3rem;
+  }
+  
+  .construction-description {
+    font-size: 1.1rem;
+  }
+  
+  .construction-contact-text {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .construction-message h1 {
+    font-size: 2rem;
+  }
+  
+  .construction-icon {
+    font-size: 2.5rem;
+  }
+  
+  .construction-description {
+    font-size: 1rem;
+  }
+  
+  .construction-contact-text {
+    font-size: 1.2rem;
+  }
+}

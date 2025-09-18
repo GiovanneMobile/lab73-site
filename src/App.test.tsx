@@ -2,15 +2,22 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders Lab 73 studio site', () => {
+test('renders Lab 73 under construction site', () => {
   render(<App />);
-  // Test for Portuguese title (default language)
-  const heroTitle = screen.getByRole('heading', { name: 'Lab 73 - Espaço para Experimentação Musical' });
-  expect(heroTitle).toBeInTheDocument();
   
-  // Test that language selector is present
-  const brazilFlag = screen.getByRole('button', { name: 'Alterar idioma para Português' });
-  const usFlag = screen.getByRole('button', { name: 'Change language to English' });
-  expect(brazilFlag).toBeInTheDocument();
-  expect(usFlag).toBeInTheDocument();
+  // Test for the Lab 73 logo in the header
+  const logoTitle = screen.getByRole('heading', { name: 'Lab 73' });
+  expect(logoTitle).toBeInTheDocument();
+  
+  // Test for Portuguese under construction title (default language)
+  const constructionTitle = screen.getByRole('heading', { name: 'Site em Construção' });
+  expect(constructionTitle).toBeInTheDocument();
+  
+  // Test that contact section is present and functional
+  const contactTitle = screen.getByRole('heading', { name: 'Entre em Contato' });
+  expect(contactTitle).toBeInTheDocument();
+  
+  // Test that contact form is present
+  const submitButton = screen.getByRole('button', { name: 'Enviar Mensagem' });
+  expect(submitButton).toBeInTheDocument();
 });
