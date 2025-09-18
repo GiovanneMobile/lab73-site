@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">📞</div>
+              <div className="contact-icon">☎</div>
               <div className="contact-details">
                 <h4>{t('contact.info.phone.title')}</h4>
                 <p>{t('contact.info.phone.number')}</p>
@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">✉️</div>
+              <div className="contact-icon">✉</div>
               <div className="contact-details">
                 <h4>{t('contact.info.email.title')}</h4>
                 <p>{t('contact.info.email.address')}</p>
@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">🕒</div>
+              <div className="contact-icon">⏰</div>
               <div className="contact-details">
                 <h4>{t('contact.info.hours.title')}</h4>
                 <p>{t('contact.info.hours.weekdays')}<br />

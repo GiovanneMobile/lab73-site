@@ -23,10 +23,10 @@ const Footer: React.FC = () => {
               <p>{t('footer.logo.subtitle')}</p>
             </div>
             <div className="social-links">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">📺</a>
-              <a href="https://soundcloud.com" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">🎵</a>
-              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify">🎧</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
+              <a href="https://soundcloud.com" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">SC</a>
+              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify">SP</a>
             </div>
           </div>
 
@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
             <h4>{t('footer.contactInfo')}</h4>
             <div className="contact-info">
               <p>📍 {t('footer.address')}</p>
-              <p>📞 {t('contact.info.phone.number')}</p>
-              <p>✉️ {t('contact.info.email.address')}</p>
+              <p>☎ {t('contact.info.phone.number')}</p>
+              <p>✉ {t('contact.info.email.address')}</p>
             </div>
           </div>
         </div>

@@ -45,7 +45,7 @@ const About: React.FC = () => {
           <div className="about-features">
             <div className="feature-list">
               <div className="feature-item">
-                <div className="feature-icon">🎹</div>
+                <div className="feature-icon">♪</div>
                 <div className="feature-content">
                   <h4>{t('about.features.equipment.title')}</h4>
                   <p>{t('about.features.equipment.description')}</p>
@@ -53,7 +53,7 @@ const About: React.FC = () => {
               </div>
               
               <div className="feature-item">
-                <div className="feature-icon">🏠</div>
+                <div className="feature-icon">▣</div>
                 <div className="feature-content">
                   <h4>{t('about.features.rooms.title')}</h4>
                   <p>{t('about.features.rooms.description')}</p>
@@ -61,7 +61,7 @@ const About: React.FC = () => {
               </div>
               
               <div className="feature-item">
-                <div className="feature-icon">👥</div>
+                <div className="feature-icon">👤</div>
                 <div className="feature-content">
                   <h4>{t('about.features.team.title')}</h4>
                   <p>{t('about.features.team.description')}</p>
