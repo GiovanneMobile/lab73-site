@@ -18,6 +18,10 @@
   width: 40px;
   height: 40px;
   position: relative;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  -moz-font-feature-settings: "liga" on, "calt" on;
+  font-feature-settings: "liga" on, "calt" on;
+  text-rendering: optimizeLegibility;
 }
 
 .language-option:hover {
@@ -33,6 +37,19 @@
 .language-option.active:hover {
   border-color: #ff8e53;
   background: rgba(255, 142, 83, 0.1);
+}
+
+/* Flag emoji and fallback styling */
+.flag-emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twitter Color Emoji", "Twemoji Mozilla", emoji, sans-serif;
+  font-size: inherit;
+}
+
+.flag-fallback {
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: #ff6b6b;
 }
 
 @media (max-width: 768px) {
