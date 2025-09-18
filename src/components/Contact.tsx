@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconName } from '@fortawesome/fontawesome-svg-core';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { useLanguage } from '../contexts/LanguageContext';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
@@ -75,6 +75,7 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="contact-content">
+          {/* Contact info removed during construction phase 
           <div className="contact-info">
             <div className="contact-item">
               <div className="contact-icon">
@@ -117,6 +118,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
+          */}
 
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
