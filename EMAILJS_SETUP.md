@@ -43,8 +43,33 @@ The contact form has been integrated with EmailJS to send emails directly from t
 1. Go to "Account" -> "General"
 2. Find your **Public Key** (e.g., `key_def789`)
 
-### 5. Configure Environment Variables
+### 5. Configure GitHub Secrets for Production
 
+For production deployment, configure the EmailJS credentials as GitHub repository secrets:
+
+1. Go to your GitHub repository
+2. Navigate to **Settings** → **Secrets and variables** → **Actions**
+3. Click **New repository secret** and add the following secrets:
+   - `EMAILJS_SERVICE_ID` = your_actual_service_id
+   - `EMAILJS_TEMPLATE_ID` = your_actual_template_id
+   - `EMAILJS_PUBLIC_KEY` = your_actual_public_key
+
+### 6. Local Development Configuration
+
+For local development and testing, you can either:
+
+**Option A: Use environment variables (recommended)**
+```bash
+# Set environment variables in your shell
+export REACT_APP_EMAILJS_SERVICE_ID=your_service_id
+export REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
+export REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
+
+# Then start the development server
+npm start
+```
+
+**Option B: Use .env file (for development only)**
 1. Copy `.env.example` to `.env`:
    ```bash
    cp .env.example .env
@@ -56,6 +81,8 @@ The contact form has been integrated with EmailJS to send emails directly from t
    REACT_APP_EMAILJS_TEMPLATE_ID=your_actual_template_id
    REACT_APP_EMAILJS_PUBLIC_KEY=your_actual_public_key
    ```
+
+⚠️ **Important**: The `.env` file is excluded from git and should **never** be committed to the repository.
 
 ## Testing
 
@@ -92,18 +119,25 @@ The form includes proper error handling:
 
 ## Production Deployment
 
-For production deployment:
+For production deployment on GitHub Pages:
 
-1. Set up environment variables in your hosting platform
-2. Ensure the EmailJS domain is whitelisted if using strict CORS policies
+1. **Configure GitHub Secrets**: Add your EmailJS credentials as repository secrets (see configuration section above)
+2. **Automatic Deployment**: The GitHub Actions workflow will automatically inject the secrets as environment variables during the build process
+3. **Security**: EmailJS credentials are securely stored as GitHub secrets and never exposed in the repository
+4. **CORS**: Ensure the EmailJS domain is whitelisted if using strict CORS policies
+5. **Testing**: Test the contact form thoroughly after deployment to ensure emails are being sent correctly
+
+The deployment workflow automatically handles the environment variable injection from GitHub secrets, so no additional configuration is needed once the secrets are set up.
 3. Test the contact form thoroughly before going live
 
 ## Security Notes
 
-- EmailJS public keys are safe to expose in client-side code
-- Never put private keys or sensitive credentials in environment variables
-- The `.env` file is included in `.gitignore` to prevent accidental commits
-- Consider implementing rate limiting on your EmailJS account settings
+- **GitHub Secrets**: Production credentials are securely stored as GitHub repository secrets and never exposed in the codebase
+- **EmailJS Public Keys**: EmailJS public keys are safe to expose in client-side code by design
+- **No Sensitive Data in Repository**: EmailJS credentials are not stored in the repository, reducing security risks
+- **Environment Separation**: Development and production use different configuration methods for enhanced security
+- **Rate Limiting**: Consider implementing rate limiting on your EmailJS account settings to prevent abuse
+- **The `.env` file**: If used for development, it's included in `.gitignore` to prevent accidental commits
 
 ## Troubleshooting
 
