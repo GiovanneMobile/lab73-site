@@ -60,6 +60,8 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
+          {/* Contact info removed during construction phase */}
+          {/*
           <div className="footer-section">
             <h4>{t('footer.contactInfo')}</h4>
             <div className="contact-info">
@@ -74,6 +76,7 @@ const Footer: React.FC = () => {
               </p>
             </div>
           </div>
+          */}
         </div>
 
         <div className="footer-bottom">

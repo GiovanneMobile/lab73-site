@@ -39,6 +39,17 @@
   z-index: 1;
 }
 
+/* When contact info is hidden, make form take full width */
+.contact-content.form-only {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.contact-content.form-only .contact-form {
+  max-width: 600px;
+  width: 100%;
+}
+
 .contact-info {
   display: flex;
   flex-direction: column;
