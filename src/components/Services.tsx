@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { useLanguage } from '../contexts/LanguageContext';
 import './Services.css';
 
@@ -9,32 +11,32 @@ const Services: React.FC = () => {
     {
       title: t('services.recording.title'),
       description: t('services.recording.description'),
-      icon: '♪' // Musical note for recording
+      icon: 'microphone' as IconName
     },
     {
       title: t('services.mixing.title'),
       description: t('services.mixing.description'),
-      icon: '⚡' // Lightning for mixing power
+      icon: 'sliders' as IconName
     },
     {
       title: t('services.mastering.title'),
       description: t('services.mastering.description'),
-      icon: '♫' // Musical notes for mastering
+      icon: 'volume-high' as IconName
     },
     {
       title: t('services.production.title'),
       description: t('services.production.description'),
-      icon: '🎵' // Music note (keeping this as it renders well)
+      icon: 'music' as IconName
     },
     {
       title: t('services.coaching.title'),
       description: t('services.coaching.description'),
-      icon: '●' // Simple circle for coaching/speaking
+      icon: 'broadcast-tower' as IconName
     },
     {
       title: t('services.live.title'),
       description: t('services.live.description'),
-      icon: '▶' // Play button for live sessions
+      icon: 'video' as IconName
     }
   ];
 
@@ -50,7 +52,7 @@ const Services: React.FC = () => {
           {services.map((service, index) => (
             <div key={index} className="service-card">
               <div className="service-icon">
-                <span>{service.icon}</span>
+                <FontAwesomeIcon icon={service.icon} />
               </div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>

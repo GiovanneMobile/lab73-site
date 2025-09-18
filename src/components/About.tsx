@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { useLanguage } from '../contexts/LanguageContext';
 import './About.css';
 
@@ -45,7 +47,9 @@ const About: React.FC = () => {
           <div className="about-features">
             <div className="feature-list">
               <div className="feature-item">
-                <div className="feature-icon">♪</div>
+                <div className="feature-icon">
+                  <FontAwesomeIcon icon={'compact-disc' as IconName} />
+                </div>
                 <div className="feature-content">
                   <h4>{t('about.features.equipment.title')}</h4>
                   <p>{t('about.features.equipment.description')}</p>
@@ -53,7 +57,9 @@ const About: React.FC = () => {
               </div>
               
               <div className="feature-item">
-                <div className="feature-icon">▣</div>
+                <div className="feature-icon">
+                  <FontAwesomeIcon icon={'building' as IconName} />
+                </div>
                 <div className="feature-content">
                   <h4>{t('about.features.rooms.title')}</h4>
                   <p>{t('about.features.rooms.description')}</p>
@@ -61,7 +67,9 @@ const About: React.FC = () => {
               </div>
               
               <div className="feature-item">
-                <div className="feature-icon">👤</div>
+                <div className="feature-icon">
+                  <FontAwesomeIcon icon={'users' as IconName} />
+                </div>
                 <div className="feature-content">
                   <h4>{t('about.features.team.title')}</h4>
                   <p>{t('about.features.team.description')}</p>
@@ -69,7 +77,9 @@ const About: React.FC = () => {
               </div>
               
               <div className="feature-item">
-                <div className="feature-icon">⚡</div>
+                <div className="feature-icon">
+                  <FontAwesomeIcon icon={'bolt' as IconName} />
+                </div>
                 <div className="feature-content">
                   <h4>{t('about.features.turnaround.title')}</h4>
                   <p>{t('about.features.turnaround.description')}</p>
