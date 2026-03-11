@@ -9,7 +9,7 @@ export const headerPhrases: string[] = [
   "SÓ MAIS UM TAKE, EU JURO",
   "GRAVANDO EM 440Hz E ÓDIO",
   "SOLO DE BATERIA NÃO É CRIME",
-  "O FEEDBACK É PARTE DA ARTE",
+  "A MICROFONIA É PARTE DA ARTE",
   "CABO COM MAU CONTATO É CHARME",
   "MAIS ALTO QUE O VIZINHO",
   "NÃO É RUÍDO, É TEXTURA",

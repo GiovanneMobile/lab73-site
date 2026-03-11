@@ -103,4 +103,13 @@
   .chalk-logo:hover {
     opacity: 1;
   }
+  .scroll-infinite {
+    display: flex;
+    width: max-content;
+    animation: infinite-scroll 40s linear infinite;
+  }
+  @keyframes infinite-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 }

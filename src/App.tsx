@@ -4,6 +4,7 @@ import Logo from './components/Logo';
 import { pricingPlans } from './config/pricing';
 import { calendarConfig } from './config/calendar';
 import { headerPhrases } from './config/phrases';
+import { visitedBands } from './config/bands';
 
 const App: React.FC = () => {
   const randomPhrase = React.useMemo(() => {
@@ -159,6 +160,50 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Visited Bands Section */}
+        <section className="py-24 chalkboard-bg overflow-hidden border-y border-white/5 relative">
+          <div className="max-w-7xl mx-auto px-6 mb-16 md:mb-32 relative z-10">
+            <h2 className="font-hand text-4xl md:text-5xl text-center text-white/80 italic">
+              Quem já tocou por aqui...
+            </h2>
+          </div>
+
+          <div className="relative flex items-center">
+            <div className="scroll-infinite flex gap-2 md:gap-8">
+              {[...visitedBands, ...visitedBands].map((band, i) => (
+                <div key={i} className="flex flex-col items-center group transition-all duration-300 min-w-[200px] md:min-w-[200px] gap-3 md:gap-0">
+                  <div className="relative flex items-center justify-center">
+                    {band.image ? (
+                      <div className="w-48 h-48 md:w-72 md:h-72 flex items-center justify-center relative bg-white/5 rounded-lg overflow-hidden border border-white/10">
+                        <img
+                          alt={band.name}
+                          className="w-full h-full object-contain p-2 md:grayscale md:invert md:brightness-200 md:opacity-60 md:group-hover:filter-none md:group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 chalk-logo"
+                          src={band.image}
+                        />
+                        <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      </div>
+                    ) : (
+                      <div className="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center bg-white/5 rounded-lg border border-dashed border-white/20">
+                        <span className="font-marker text-xl md:text-3xl text-white/30 md:group-hover:text-studioOrange md:group-hover:scale-110 transition-all tracking-tighter text-center px-2">
+                          {band.name}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  {/* Name only visible on mobile (below logos) */}
+                  <span className="md:hidden font-marker text-xl text-studioOrange text-center uppercase tracking-widest">
+                    {band.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Gradient Overlays for smooth edges */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#1a1a1a] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#1a1a1a] to-transparent z-10 pointer-events-none"></div>
           </div>
         </section>
 
