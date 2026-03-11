@@ -8,23 +8,23 @@ export interface PricingPlan {
 export const pricingPlans: PricingPlan[] = [
   {
     title: '2 horas',
-    desc: 'Ideal para bandas pequenas',
+    desc: 'Ideal para artista solo ou duplas',
     price: 'R$ 70'
   },
   {
     title: '3 horas',
-    desc: 'Mais tempo para criar',
+    desc: 'Ideal para bandas pequenas',
     price: 'R$ 90'
   },
   {
-    title: 'Combo Promo (4 Sessões)',
-    desc: 'Pacote de 2 horas por sessão',
+    title: 'Combo Promo',
+    desc: 'Pacote com 3 sessões de 3 horas cada',
     price: 'R$ 300',
     highlight: true
   },
   {
-    title: 'Combo Premium (4 Sessões)',
-    desc: 'Pacote de 3 horas por sessão',
+    title: 'Combo Premium',
+    desc: 'Pacote com 4 sessões de 3 horas cada',
     price: 'R$ 460'
   }
 ];
