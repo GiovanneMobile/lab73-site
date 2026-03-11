@@ -5,6 +5,7 @@ import { pricingPlans } from './config/pricing';
 import { calendarConfig } from './config/calendar';
 import { headerPhrases } from './config/phrases';
 import { visitedBands } from './config/bands';
+import { feedbacks } from './config/feedbacks';
 
 const App: React.FC = () => {
   const randomPhrase = React.useMemo(() => {
@@ -207,6 +208,33 @@ const App: React.FC = () => {
           </div>
         </section>
 
+        {/* Feedbacks Section */}
+        <section className="py-24 chalkboard-bg overflow-hidden relative border-b border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-script text-6xl md:text-8xl text-center mb-16 rotate-[-1deg] px-6">
+              O que dizem os feras
+            </h2>
+
+            <div className="flex md:flex-wrap overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:justify-center gap-8 pt-8 pb-12 md:py-0 hide-scrollbar px-[7.5vw] md:px-6">
+              {feedbacks.map((f, i) => (
+                <div key={i} className={`flex-shrink-0 w-[85vw] md:w-[calc(50%-1rem)] snap-center sticky-note p-8 md:p-10 ${f.rotation} hover:rotate-0 transition-transform duration-300 flex flex-col justify-between min-h-[350px] md:min-h-[300px]`}>
+                  <div>
+                    <span className="material-symbols-outlined !text-4xl md:!text-5xl text-black/20 mb-4 block">format_quote</span>
+                    <p className="font-hand text-lg md:text-2xl leading-relaxed text-black">
+                      "{f.text}"
+                    </p>
+                  </div>
+                  <div className="mt-8 text-right">
+                    <span className="font-marker text-lg text-black/60 border-t border-black/10 pt-2 inline-block">
+                      - {f.author}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Gallery Section */}
         <section className="py-32 px-6 overflow-hidden" id="gallery">
           <div className="max-w-7xl mx-auto">
@@ -406,7 +434,7 @@ const App: React.FC = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-2 md:col-span-2">
-                  <label className="font-marker text-xl text-white/60">QUE TU QUER?</label>
+                  <label className="font-marker text-xl text-white/60">O QUE TU QUER?</label>
                   <select
                     className="bg-transparent border-b-2 border-white/30 p-2 font-hand text-2xl focus:outline-none focus:border-studioOrange text-white cursor-pointer appearance-none"
                     name="service"
@@ -414,8 +442,9 @@ const App: React.FC = () => {
                     onChange={handleChange}
                   >
                     <option className="bg-zinc-900">ENSAIAR</option>
-                    <option className="bg-zinc-900">GRAVAR O HIT</option>
+                    <option className="bg-zinc-900">GRAVAR</option>
                     <option className="bg-zinc-900">MIX / MASTER</option>
+                    <option className="bg-zinc-900">TÁ MOLE (OUTROS)</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-2 md:col-span-2">
