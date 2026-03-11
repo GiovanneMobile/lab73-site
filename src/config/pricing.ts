@@ -18,7 +18,7 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     title: 'Combo Promo',
-    desc: 'Pacote com 3 sessões de 3 horas cada',
+    desc: 'Pacote com 4 sessões de 2 horas cada',
     price: 'R$ 300',
     highlight: true
   },

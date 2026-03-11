@@ -51,7 +51,7 @@ const App: React.FC = () => {
             <div className="tape-piece -top-2 -left-4 rotate-[-12deg] opacity-60"></div>
             <div className="bg-white text-black p-2 font-marker rotate-[-2deg] border-2 border-black shadow-xl scale-75 md:scale-100 origin-top-left transition-transform">
               <Logo gap="gap-4 md:gap-6" iconHeight="h-10 md:h-15" labHeight="h-6 md:h-10" />
-              <div className="text-[12px] md:text-[18px] text-center mt-1 border-t border-black uppercase truncate max-w-[150px] md:max-w-none mx-auto">{randomPhrase}</div>
+              <div className="text-[12px] md:text-[18px] text-center mt-1 border-t border-black uppercase whitespace-pre-line leading-tight mx-auto">{randomPhrase}</div>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ const App: React.FC = () => {
             <div className="absolute -top-20 -left-20 opacity-20 hidden lg:block">
               <span className="material-symbols-outlined !text-[300px] rotate-[-15deg]">music_note</span>
             </div>
-            <div className="relative z-10 border-4 border-dashed border-white/20 p-12 md:p-20 rounded-3xl bg-black/40 backdrop-blur-sm">
+            <div className="relative z-10 border-4 border-dashed border-white/20 p-12 mt-18 md:mt-0 md:p-20 rounded-3xl bg-black/40 backdrop-blur-sm">
               <div className="tape-piece -top-6 left-1/4 rotate-6"></div>
               <div className="tape-piece -bottom-6 right-1/4 -rotate-3"></div>
               <h1 className="font-script text-5xl sm:text-7xl md:text-[9rem] leading-[0.8] text-center uppercase tracking-tighter mb-8">
