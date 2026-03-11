@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-concrete: #4b5563;
+  --color-graphite-light: #2d2d2d;
+  --color-graphite: #1a1a1a;
+  --color-graphite-dark: #0a0a0a;
+  --color-studioOrange: #f97316;
+  --color-studioOrange-bright: #ff5c00;
+
+  --font-marker: "Architects Daughter", cursive;
+  --font-script: "Shadows Into Light", cursive;
+  --font-hand: "Gloria Hallelujah", cursive;
+  --font-body: "Caveat", cursive;
+}
+
+@layer base {
+  body {
+    background-color: #1a1a1a;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Caveat', cursive;
+    background-image: 
+        radial-gradient(circle at 2px 2px, #333 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+}
+
+@layer components {
+  .chalkboard-bg {
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  .torn-paper {
+    background: #fdfdfd;
+    color: #1a1a1a;
+    position: relative;
+    clip-path: polygon(
+        2% 0%, 98% 1%, 100% 4%, 99% 96%, 97% 100%, 3% 99%, 0% 95%, 1% 5%
+    );
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  }
+  .torn-edge-aggressive {
+    clip-path: polygon(
+        0% 2%, 5% 0%, 10% 3%, 15% 0%, 20% 4%, 25% 1%, 30% 5%, 35% 2%, 40% 6%, 45% 1%, 50% 5%, 55% 2%, 60% 7%, 65% 3%, 70% 8%, 75% 2%, 80% 6%, 85% 1%, 90% 5%, 95% 0%, 100% 4%,
+        98% 15%, 100% 25%, 97% 35%, 100% 45%, 98% 55%, 100% 65%, 97% 75%, 100% 85%, 98% 95%,
+        95% 100%, 85% 97%, 75% 100%, 65% 96%, 55% 100%, 45% 97%, 35% 100%, 25% 96%, 15% 100%, 5% 97%, 0% 100%,
+        2% 85%, 0% 75%, 3% 65%, 0% 55%, 2% 45%, 0% 35%, 3% 25%, 0% 15%
+    );
+  }
+  .notebook-paper {
+    background-color: #fff;
+    background-image: linear-gradient(#94d2bd 1px, transparent 1px);
+    background-size: 100% 2rem;
+    border-left: 2px solid #ff9999;
+    padding-left: 3rem !important;
+  }
+  .tape-piece {
+    position: absolute;
+    background: rgba(220, 220, 220, 0.4);
+    width: 80px;
+    height: 30px;
+    backdrop-filter: blur(1px);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    z-index: 20;
+    border-left: 1px solid rgba(255,255,255,0.3);
+    border-right: 1px solid rgba(255,255,255,0.3);
+  }
+  .gig-poster {
+    filter: contrast(1.2) grayscale(1) brightness(0.9);
+    transition: all 0.3s ease;
+    border: 1px solid #000;
+  }
+  .whiteboard-grid {
+    background: #fdfdfd;
+    color: #1a1a1a;
+    border: 8px solid #333;
+    border-radius: 4px;
+  }
+  .sticky-note {
+    background: #fef08a;
+    color: #1a1a1a;
+    padding: 1.5rem;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    transform: rotate(2deg);
+  }
+  .erased-slot {
+    background-image: 
+        linear-gradient(45deg, #ddd 25%, transparent 25%), 
+        linear-gradient(-45deg, #ddd 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ddd 75%),
+        linear-gradient(-45deg, transparent 75%, #ddd 75%);
+    background-size: 10px 10px;
+    opacity: 0.2;
+  }
+  .chalk-logo {
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.3)) contrast(0.8) brightness(1.2);
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  .chalk-logo:hover {
+    opacity: 1;
+  }
+}
