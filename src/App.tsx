@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
+
 import Logo from './components/Logo';
-import { pricingPlans } from './config/pricing';
+
 import { calendarConfig } from './config/calendar';
 import { headerPhrases } from './config/phrases';
 import { visitedBands } from './config/bands';
 import { feedbacks } from './config/feedbacks';
 import { servicesConfig } from './config/services';
+import Pricing from './components/Pricing';
+import UnderConstruction from './components/UnderConstruction';
+import ConnectWithUs from './components/ConnectWithUs';
+import Footer from './components/Footer';
+import Contact from './components/Contact';
+
+
+
+
+
 
 const App: React.FC = () => {
+  const isUnderConstruction = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
+
   const randomPhrase = React.useMemo(() => {
+
     return headerPhrases[Math.floor(Math.random() * headerPhrases.length)];
   }, []);
 
@@ -17,39 +30,15 @@ const App: React.FC = () => {
     return [...visitedBands].sort(() => Math.random() - 0.5);
   }, []);
 
-  const [formData, setFormData] = useState({
-    from_name: '',
-    from_email: '',
-    service: 'ENSAIAR',
-    message: ''
-  });
-  const [status, setStatus] = useState<'IDLE' | 'SENDING' | 'SUCCESS' | 'ERROR'>('IDLE');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('SENDING');
 
-    const templateParams = {
-      ...formData,
-      to_name: 'Lab 73 Studio'
-    };
-
-    emailjs.send('service_k7eumnn', 'template_dspowka', templateParams, 'W9at6a7npiud_zM9z')
-      .then(() => {
-        setStatus('SUCCESS');
-        setFormData({ from_name: '', from_email: '', service: 'ENSAIAR', message: '' });
-      }, (error) => {
-        console.error('FAILED...', error);
-        setStatus('ERROR');
-      });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  if (isUnderConstruction) {
+    return <UnderConstruction />;
+  }
 
   return (
+
     <div className="antialiased selection:bg-studioOrange selection:text-black">
       <header className="fixed top-0 left-0 w-full z-[100] p-4 md:p-6 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-start">
@@ -256,27 +245,8 @@ const App: React.FC = () => {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-24 md:py-32 px-6" id="pricing">
-          <div className="max-w-4xl mx-auto torn-paper notebook-paper p-8 md:p-20 shadow-[10px_10px_0px_#f97316] md:shadow-[20px_20px_0px_#f97316] rotate-1 relative">
-            <div className="tape-piece -top-6 left-10 rotate-[-20deg] opacity-60"></div>
-            <div className="tape-piece -top-6 right-10 rotate-[20deg] opacity-60"></div>
-            <h2 className="font-script text-5xl md:text-7xl mb-12 md:mb-16 text-center underline decoration-studioOrange decoration-8 underline-offset-8 uppercase leading-tight">TABELA DE PREÇO$</h2>
-            <div className="space-y-10 font-hand text-2xl">
-              {pricingPlans.map((p, i) => (
-                <div key={i} className={`${p.highlight ? 'bg-studioOrange/20 p-4 md:p-6 border-4 border-double border-studioOrange rotate-[-1deg]' : 'border-b-2 border-black/10 pb-4'} flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4`}>
-                  <div className="w-full sm:w-auto">
-                    <div className={`font-marker text-2xl md:text-3xl uppercase ${p.highlight ? 'text-studioOrange' : ''}`}>{p.title}</div>
-                    <div className="text-black/60 text-lg md:text-2xl">{p.desc}</div>
-                  </div>
-                  <div className={`font-marker ${p.highlight ? 'text-4xl md:text-6xl text-studioOrange' : 'text-4xl md:text-5xl text-studioOrange'}`}>{p.price}</div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-12 text-center">
-              <span className="inline-block border-4 border-red-600 text-red-600 px-6 py-2 font-marker text-2xl rotate-[-3deg] uppercase font-bold">Verifique a disponibilidade!</span>
-            </div>
-          </div>
-        </section>
+        <Pricing />
+
 
         {/* Calendar Section */}
         <section className="py-24 md:py-32 px-6" id="calendar">
@@ -338,43 +308,11 @@ const App: React.FC = () => {
 
         {/* Connect Section */}
         <section className="py-20 px-6" id="connect">
-          <div className="max-w-4xl mx-auto border-4 border-dashed border-white/10 p-12 rounded-[50px] relative bg-zinc-900/30 backdrop-blur-sm shadow-2xl">
-            <div className="tape-piece -top-4 left-1/2 -translate-x-1/2 rotate-1 opacity-80 w-32 h-10"></div>
-
-            <div className="text-center mb-10 md:mb-16">
-              <h2 className="font-hand text-2xl md:text-6xl text-studioOrange">
-                <span className="font-marker mr-4 text-white/40">#</span>
-                se conecte com a gente
-              </h2>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-10 md:gap-40">
-              <a
-                href={import.meta.env.VITE_YOUTUBE_URL || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 transition-transform hover:scale-110"
-              >
-                <div className="w-10 h-10 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center text-black shadow-lg">
-                  <span className="material-symbols-outlined !text-1xl md:!text-5xl font-bold">smart_display</span>
-                </div>
-                <span className="font-marker text-l md:text-4xl tracking-widest text-white/70 group-hover:text-studioOrange">YOUTUBE</span>
-              </a>
-
-              <a
-                href={import.meta.env.VITE_INSTAGRAM_URL || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-4 transition-transform hover:scale-110"
-              >
-                <div className="w-10 h-10 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center text-black shadow-lg">
-                  <span className="material-symbols-outlined !text-1xl md:!text-5xl font-bold">nest_cam_wired_stand</span>
-                </div>
-                <span className="font-marker text-l md:text-4xl tracking-widest text-white/70 group-hover:text-studioOrange">INSTAGRAM</span>
-              </a>
-            </div>
+          <div className="max-w-4xl mx-auto">
+            <ConnectWithUs />
           </div>
         </section>
+
 
         {/* Feedbacks Section */}
         <section className="py-16 md:py-32 overflow-hidden relative">
@@ -404,130 +342,14 @@ const App: React.FC = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-32 px-6" id="contact">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-start">
-            <div className="lg:w-1/3 torn-paper torn-edge-aggressive notebook-paper p-10 rotate-[-2deg] shadow-2xl relative z-10">
-              <div className="tape-piece -top-6 -left-6 rotate-[-45deg] scale-75 opacity-70"></div>
-              <h2 className="font-script text-4xl sm:text-5xl md:text-6xl mb-8 md:mb-12 border-b-4 border-black uppercase">CONTATO</h2>
-              <div className="space-y-8 md:space-y-10 font-hand text-xl md:text-2xl">
-                <div>
-                  <h4 className="font-marker text-xl text-studioOrange">ONDE?</h4>
-                  <a href={import.meta.env.VITE_GOOGLE_MAPS_URL || "#"} target="_blank" rel="noopener noreferrer" className="hover:text-studioOrange transition-colors">
-                    <p>{import.meta.env.VITE_STUDIO_ADDRESS || "Rua do Som, 73, Bairro Áudio, São Paulo, SP"}</p>
-                  </a>
-                </div>
-                <div>
-                  <h4 className="font-marker text-xl text-studioOrange">EMAIL</h4>
-                  <p>{import.meta.env.VITE_STUDIO_EMAIL || "#"}</p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-2/3 w-full border-4 border-dashed border-white/20 p-12 md:p-16 rounded-[40px] relative bg-white/5">
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-10" onSubmit={handleSubmit}>
-                <div className="flex flex-col gap-2">
-                  <label className="font-marker text-xl text-white/60">COMO TE CHAMAM?</label>
-                  <input
-                    className="bg-transparent border-b-2 border-white/30 p-2 font-hand text-2xl focus:outline-none focus:border-studioOrange text-white placeholder-white/20"
-                    name="from_name"
-                    placeholder="Seu nome..."
-                    required
-                    type="text"
-                    value={formData.from_name}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="font-marker text-xl text-white/60">SEU E-MAIL</label>
-                  <input
-                    className="bg-transparent border-b-2 border-white/30 p-2 font-hand text-2xl focus:outline-none focus:border-studioOrange text-white placeholder-white/20"
-                    name="from_email"
-                    placeholder="voce@exemplo.com"
-                    required
-                    type="email"
-                    value={formData.from_email}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="flex flex-col gap-2 md:col-span-2">
-                  <label className="font-marker text-xl text-white/60">O QUE TU QUER?</label>
-                  <select
-                    className="bg-transparent border-b-2 border-white/30 p-2 font-hand text-2xl focus:outline-none focus:border-studioOrange text-white cursor-pointer appearance-none"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                  >
-                    <option className="bg-zinc-900">ENSAIAR</option>
-                    <option className="bg-zinc-900">GRAVAR</option>
-                    <option className="bg-zinc-900">MIX / MASTER</option>
-                    <option className="bg-zinc-900">TÁ MOLE (OUTROS)</option>
-                  </select>
-                </div>
-                <div className="flex flex-col gap-2 md:col-span-2">
-                  <label className="font-marker text-xl text-white/60">CONTA MAIS...</label>
-                  <textarea
-                    className="bg-transparent border-b-2 border-white/30 p-2 font-hand text-2xl focus:outline-none focus:border-studioOrange h-32 text-white placeholder-white/20"
-                    name="message"
-                    placeholder="Diz aí o que você precisa..."
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                  ></textarea>
-                </div>
-                <div className="md:col-span-2 mt-4">
-                  <button
-                    className={`w-full font-marker text-2xl md:text-4xl py-4 md:py-6 hover:scale-105 transition-transform flex items-center justify-center gap-4 shadow-xl border-2 border-black ${status === 'SUCCESS' ? 'bg-green-500' : status === 'ERROR' ? 'bg-red-500' : 'bg-studioOrange'
-                      } text-black`}
-                    disabled={status === 'SENDING'}
-                    type="submit"
-                  >
-                    {status === 'SENDING' ? 'ENVIANDO...' : status === 'SUCCESS' ? 'VALEU! ENVIADO!' : status === 'ERROR' ? 'OPS! ERRO...' : 'ENVIAR'}
-                    <span className="material-symbols-outlined !text-4xl">
-                      {status === 'SUCCESS' ? 'check_circle' : status === 'ERROR' ? 'error' : 'send'}
-                    </span>
-                  </button>
-                </div>
-              </form>
-              <span className="material-symbols-outlined absolute bottom-5 right-10 !text-8xl text-white/5 -rotate-12 pointer-events-none">edit_note</span>
-            </div>
-          </div>
-        </section>
+        <Contact />
 
-        {/* Google Maps Section */}
-        <section className="py-12 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="border-8 border-white/10 rounded-3xl overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3861.944208226019!2d-39.03504108516086!3d-14.82810408975924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTTCsDQ5JzQxLjIiUyAzOcKwMDInMDAuNCJX!5e0!3m2!1sen!2sbr!4v1710188200000!5m2!1sen!2sbr"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps Location"
-              ></iframe>
-            </div>
-          </div>
-        </section>
+
+
       </main>
 
-      <footer className="py-20 px-6 relative border-t border-white/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
-          <div className="p-4 rotate-3 mb-8 shadow-xl bg-white text-black">
-            <Logo gap="gap-6" iconHeight="h-15" labHeight="h-10" />
-          </div>
-          <div className="text-center font-hand text-xl md:text-2xl">
-            <p className="font-marker text-2xl md:text-3xl mb-4">© 2025 ESTÚDIO LAB73</p>
-            <p className="opacity-50 text-sm md:text-base">Feito para o som que ressoa no peito.</p>
-          </div>
-        </div>
-        <div className="absolute top-10 right-10 opacity-20 pointer-events-none">
-          <div className="border-2 border-white px-4 py-1 font-marker rotate-12">DIY FANZINE VOL 73</div>
-        </div>
-        <div className="absolute bottom-10 left-10 opacity-10 pointer-events-none">
-          <span className="material-symbols-outlined !text-[150px]">album</span>
-        </div>
-      </footer>
+      <Footer />
+
     </div>
   );
 };
