@@ -40,6 +40,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_UNDER_CONSTRUCTION: ${{ vars.VITE_UNDER_CONSTRUCTION }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
