@@ -6,10 +6,15 @@ import { calendarConfig } from './config/calendar';
 import { headerPhrases } from './config/phrases';
 import { visitedBands } from './config/bands';
 import { feedbacks } from './config/feedbacks';
+import { servicesConfig } from './config/services';
 
 const App: React.FC = () => {
   const randomPhrase = React.useMemo(() => {
     return headerPhrases[Math.floor(Math.random() * headerPhrases.length)];
+  }, []);
+
+  const shuffledBands = React.useMemo(() => {
+    return [...visitedBands].sort(() => Math.random() - 0.5);
   }, []);
 
   const [formData, setFormData] = useState({
@@ -67,7 +72,8 @@ const App: React.FC = () => {
             <nav className={`${isMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row gap-2 lg:gap-4 items-end lg:items-center bg-black/90 lg:bg-transparent p-6 lg:p-0 border-2 border-white/20 lg:border-0 rounded-2xl backdrop-blur-md lg:backdrop-blur-none`}>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-3deg]" href="#about">Quem Somos</a>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[2deg]" href="#services">O Que Rola</a>
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#gallery">Fotos</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[1deg]" href="#gallery">Fotos</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#pricing">Preço$</a>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[3deg]" href="#calendar">Agenda</a>
               <a onClick={() => setIsMenuOpen(false)} className="bg-studioOrange text-black font-marker px-6 py-2 rotate-[-1deg] hover:scale-110 transition-transform shadow-lg border-2 border-black mt-4 lg:mt-0" href="#contact">RESERVA!</a>
             </nav>
@@ -109,7 +115,7 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-32 px-6" id="about">
+        <section className="py-24 md:py-32 px-6" id="about">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <div className="relative">
               <div className="font-script text-5xl md:text-7xl text-studioOrange mb-8 rotate-[-2deg]">O que é o Lab 73?</div>
@@ -138,26 +144,23 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-32 px-6" id="services">
+        <section className="py-24 md:py-32 px-6" id="services">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 md:mb-24">
               <h2 className="font-script text-6xl md:text-8xl inline-block border-b-8 border-studioOrange pb-4 rotate-1 text-center">O QUE ROLA</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { icon: 'speaker', title: 'ENSAIO', desc: 'Salas tratadas acusticamente com backline profissional.', num: '01' },
-                { icon: 'mic', title: 'GRAVAÇÃO', desc: 'Preamps e microfones de alta fidelidade para seu projeto.', num: '02', dark: true },
-                { icon: 'instant_mix', title: 'MIXAGEM', desc: 'Equilibrando e aprimorando faixas para som comercial.', num: '03' },
-                { icon: 'album', title: 'MASTERIZAÇÃO', desc: 'O polimento final para garantir que sua música soe bem.', num: '04' }
-              ].map((s, i) => (
-                <div key={i} className={`${s.dark ? 'bg-studioOrange text-black shadow-2xl' : 'torn-paper'} torn-edge-aggressive p-8 rotate-[${i % 2 === 0 ? '-2deg' : '3deg'}] hover:rotate-0 transition-transform relative`}>
-                  {i === 0 && <div className="tape-piece -top-4 -left-4 rotate-[-45deg] scale-75"></div>}
-                  {i === 1 && <div className="tape-piece -top-4 right-0 rotate-[15deg] scale-75"></div>}
-                  {i === 3 && <div className="tape-piece -bottom-4 left-1/4 rotate-2 scale-75"></div>}
-                  <span className={`material-symbols-outlined !text-6xl ${s.dark ? '' : 'text-studioOrange'} mb-6`}>{s.icon}</span>
-                  <h3 className="font-marker text-3xl mb-4">{s.title}</h3>
-                  <p className="font-hand text-xl">{s.desc}</p>
-                  <div className={`absolute bottom-4 right-4 font-marker text-4xl ${s.dark ? 'text-black/20' : 'text-black/10'}`}>{s.num}</div>
+              {servicesConfig.map((s, i) => (
+                <div key={i} className={`relative transition-transform rotate-[${i % 2 === 0 ? '-2deg' : '3deg'}] hover:rotate-0 group`}>
+                  {i === 0 && <div className="tape-piece -top-4 -left-4 rotate-[-45deg] scale-75 z-20"></div>}
+                  {i === 1 && <div className="tape-piece -top-4 right-0 rotate-[15deg] scale-75 z-20"></div>}
+                  {i === 3 && <div className="tape-piece -bottom-4 left-1/4 rotate-2 scale-75 z-20"></div>}
+                  <div className={`${s.dark ? 'bg-studioOrange text-black shadow-2xl' : 'torn-paper'} torn-edge-aggressive p-8 relative z-10 h-full`}>
+                    <span className={`material-symbols-outlined !text-6xl ${s.dark ? '' : 'text-studioOrange'} mb-6`}>{s.icon}</span>
+                    <h3 className="font-marker text-3xl mb-4">{s.title}</h3>
+                    <p className="font-hand text-xl">{s.desc}</p>
+                    <div className={`absolute bottom-4 right-4 font-marker text-4xl ${s.dark ? 'text-black/20' : 'text-black/10'}`}>{s.num}</div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -165,41 +168,53 @@ const App: React.FC = () => {
         </section>
 
         {/* Visited Bands Section */}
-        <section className="py-24 chalkboard-bg overflow-hidden border-y border-white/5 relative">
+        <section className="py-16 md:py-32 overflow-hidden ">
           <div className="max-w-7xl mx-auto px-6 mb-16 md:mb-32 relative z-10">
-            <h2 className="font-hand text-4xl md:text-5xl text-center text-white/80 italic">
+            <h2 className="font-script text-4xl md:text-8xl text-center">
               Quem já tocou por aqui...
             </h2>
           </div>
 
           <div className="relative flex items-center">
             <div className="scroll-infinite flex gap-2 md:gap-8">
-              {[...visitedBands, ...visitedBands].map((band, i) => (
-                <div key={i} className="flex flex-col items-center group transition-all duration-300 min-w-[200px] md:min-w-[200px] gap-3 md:gap-0">
-                  <div className="relative flex items-center justify-center">
-                    {band.image ? (
-                      <div className="w-48 h-48 md:w-72 md:h-72 flex items-center justify-center relative bg-white/5 rounded-lg overflow-hidden border border-white/10">
-                        <img
-                          alt={band.name}
-                          className="w-full h-full object-contain p-2 md:grayscale md:invert md:brightness-200 md:opacity-60 md:group-hover:filter-none md:group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 chalk-logo"
-                          src={band.image}
-                        />
-                        <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                      </div>
-                    ) : (
-                      <div className="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center bg-white/5 rounded-lg border border-dashed border-white/20">
-                        <span className="font-marker text-xl md:text-3xl text-white/30 md:group-hover:text-studioOrange md:group-hover:scale-110 transition-all tracking-tighter text-center px-2">
-                          {band.name}
-                        </span>
-                      </div>
-                    )}
+              {[...shuffledBands, ...shuffledBands].map((band, i) => {
+                const content = (
+                  <div className={`flex flex-col items-center group transition-all duration-300 min-w-[200px] md:min-w-[200px] gap-3 md:gap-0 ${band.url ? 'cursor-pointer' : ''}`}>
+                    <div className="relative flex items-center justify-center">
+                      {band.image ? (
+                        <div className="w-48 h-48 md:w-72 md:h-72 flex items-center justify-center relative bg-white/5 rounded-lg overflow-hidden border border-white/10">
+                          <img
+                            alt={band.name}
+                            className="w-full h-full object-contain p-2 md:grayscale md:invert md:brightness-200 md:opacity-60 md:group-hover:filter-none md:group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 chalk-logo"
+                            src={band.image}
+                          />
+                          <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </div>
+                      ) : (
+                        <div className="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center bg-white/5 rounded-lg border border-dashed border-white/20">
+                          <span className="font-marker text-xl md:text-3xl text-white/30 md:group-hover:text-studioOrange md:group-hover:scale-110 transition-all tracking-tighter text-center px-2">
+                            {band.name}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    {/* Name only visible on mobile (below logos) */}
+                    <span className="md:hidden font-marker text-xl text-studioOrange text-center uppercase tracking-widest">
+                      {band.name}
+                    </span>
                   </div>
-                  {/* Name only visible on mobile (below logos) */}
-                  <span className="md:hidden font-marker text-xl text-studioOrange text-center uppercase tracking-widest">
-                    {band.name}
-                  </span>
-                </div>
-              ))}
+                );
+
+                return band.url ? (
+                  <a key={i} href={band.url} target="_blank" rel="noopener noreferrer" className="block no-underline pointer-events-auto">
+                    {content}
+                  </a>
+                ) : (
+                  <div key={i} className="block pointer-events-auto">
+                    {content}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Gradient Overlays for smooth edges */}
@@ -208,35 +223,8 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* Feedbacks Section */}
-        <section className="py-24 chalkboard-bg overflow-hidden relative border-b border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="font-script text-6xl md:text-8xl text-center mb-16 rotate-[-1deg] px-6">
-              O que dizem os feras
-            </h2>
-
-            <div className="flex md:flex-wrap overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:justify-center gap-8 pt-8 pb-12 md:py-0 hide-scrollbar px-[7.5vw] md:px-6">
-              {feedbacks.map((f, i) => (
-                <div key={i} className={`flex-shrink-0 w-[85vw] md:w-[calc(50%-1rem)] snap-center sticky-note p-8 md:p-10 ${f.rotation} hover:rotate-0 transition-transform duration-300 flex flex-col justify-between min-h-[350px] md:min-h-[300px]`}>
-                  <div>
-                    <span className="material-symbols-outlined !text-4xl md:!text-5xl text-black/20 mb-4 block">format_quote</span>
-                    <p className="font-hand text-lg md:text-2xl leading-relaxed text-black">
-                      "{f.text}"
-                    </p>
-                  </div>
-                  <div className="mt-8 text-right">
-                    <span className="font-marker text-lg text-black/60 border-t border-black/10 pt-2 inline-block">
-                      - {f.author}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Gallery Section */}
-        <section className="py-32 px-6 overflow-hidden" id="gallery">
+        <section className="py-24 md:py-32 px-6 overflow-hidden" id="gallery">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-4">
               <h2 className="font-script text-5xl md:text-7xl rotate-[-2deg]">Gig Poster & Flyer Collection</h2>
@@ -268,7 +256,7 @@ const App: React.FC = () => {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-32 px-6" id="pricing">
+        <section className="py-24 md:py-32 px-6" id="pricing">
           <div className="max-w-4xl mx-auto torn-paper notebook-paper p-8 md:p-20 shadow-[10px_10px_0px_#f97316] md:shadow-[20px_20px_0px_#f97316] rotate-1 relative">
             <div className="tape-piece -top-6 left-10 rotate-[-20deg] opacity-60"></div>
             <div className="tape-piece -top-6 right-10 rotate-[20deg] opacity-60"></div>
@@ -291,7 +279,7 @@ const App: React.FC = () => {
         </section>
 
         {/* Calendar Section */}
-        <section className="py-32 px-6" id="calendar">
+        <section className="py-24 md:py-32 px-6" id="calendar">
           <div className="max-w-7xl mx-auto">
             <div className="whiteboard-grid p-8 shadow-2xl relative rotate-[-1deg]">
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-zinc-700 h-6 w-32 rounded-full border-4 border-zinc-600"></div>
@@ -354,23 +342,23 @@ const App: React.FC = () => {
             <div className="tape-piece -top-4 left-1/2 -translate-x-1/2 rotate-1 opacity-80 w-32 h-10"></div>
 
             <div className="text-center mb-10 md:mb-16">
-              <h2 className="font-hand text-4xl md:text-6xl text-studioOrange">
+              <h2 className="font-hand text-2xl md:text-6xl text-studioOrange">
                 <span className="font-marker mr-4 text-white/40">#</span>
                 se conecte com a gente
               </h2>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-20 md:gap-40">
+            <div className="flex flex-wrap justify-center gap-10 md:gap-40">
               <a
                 href={import.meta.env.VITE_YOUTUBE_URL || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-4 transition-transform hover:scale-110"
               >
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black shadow-lg">
-                  <span className="material-symbols-outlined !text-5xl font-bold">smart_display</span>
+                <div className="w-10 h-10 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center text-black shadow-lg">
+                  <span className="material-symbols-outlined !text-1xl md:!text-5xl font-bold">smart_display</span>
                 </div>
-                <span className="font-marker text-2xl tracking-widest text-white/70 group-hover:text-studioOrange">YOUTUBE</span>
+                <span className="font-marker text-l md:text-4xl tracking-widest text-white/70 group-hover:text-studioOrange">YOUTUBE</span>
               </a>
 
               <a
@@ -379,11 +367,38 @@ const App: React.FC = () => {
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-4 transition-transform hover:scale-110"
               >
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black shadow-lg">
-                  <span className="material-symbols-outlined !text-5xl font-bold">nest_cam_wired_stand</span>
+                <div className="w-10 h-10 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center text-black shadow-lg">
+                  <span className="material-symbols-outlined !text-1xl md:!text-5xl font-bold">nest_cam_wired_stand</span>
                 </div>
-                <span className="font-marker text-2xl tracking-widest text-white/70 group-hover:text-studioOrange">INSTAGRAM</span>
+                <span className="font-marker text-l md:text-4xl tracking-widest text-white/70 group-hover:text-studioOrange">INSTAGRAM</span>
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Feedbacks Section */}
+        <section className="py-16 md:py-32 overflow-hidden relative">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-script text-4xl md:text-8xl text-center mb-16 rotate-[-1deg] px-6">
+              O que dizem os feras
+            </h2>
+
+            <div className="flex md:flex-wrap overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:justify-center gap-8 pt-8 pb-12 md:py-0 hide-scrollbar px-[7.5vw] md:px-6">
+              {feedbacks.map((f, i) => (
+                <div key={i} className={`flex-shrink-0 w-[85vw] md:w-[calc(50%-1rem)] snap-center sticky-note p-8 md:p-10 ${f.rotation} hover:rotate-0 transition-transform duration-300 flex flex-col justify-between min-h-[250px] md:min-h-[300px]`}>
+                  <div>
+                    <span className="material-symbols-outlined !text-4xl md:!text-5xl text-black/20 mb-4 block">format_quote</span>
+                    <p className="font-hand text-lg md:text-2xl leading-relaxed text-black">
+                      "{f.text}"
+                    </p>
+                  </div>
+                  <div className="mt-8 text-right">
+                    <span className="font-marker text-lg text-black/60 border-t border-black/10 pt-2 inline-block">
+                      - {f.author}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -460,7 +475,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="md:col-span-2 mt-4">
                   <button
-                    className={`w-full font-marker text-4xl py-6 hover:scale-105 transition-transform flex items-center justify-center gap-4 shadow-xl border-2 border-black ${status === 'SUCCESS' ? 'bg-green-500' : status === 'ERROR' ? 'bg-red-500' : 'bg-studioOrange'
+                    className={`w-full font-marker text-2xl md:text-4xl py-4 md:py-6 hover:scale-105 transition-transform flex items-center justify-center gap-4 shadow-xl border-2 border-black ${status === 'SUCCESS' ? 'bg-green-500' : status === 'ERROR' ? 'bg-red-500' : 'bg-studioOrange'
                       } text-black`}
                     disabled={status === 'SENDING'}
                     type="submit"
@@ -480,7 +495,7 @@ const App: React.FC = () => {
         {/* Google Maps Section */}
         <section className="py-12 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="border-8 border-white/10 rounded-3xl overflow-hidden shadow-2xl grayscale contrast-125 brightness-75 hover:grayscale-0 transition-all duration-700">
+            <div className="border-8 border-white/10 rounded-3xl overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3861.944208226019!2d-39.03504108516086!3d-14.82810408975924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTTCsDQ5JzQxLjIiUyAzOcKwMDInMDAuNCJX!5e0!3m2!1sen!2sbr!4v1710188200000!5m2!1sen!2sbr"
                 width="100%"
