@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { siteConfig } from '../config/site';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -107,17 +108,18 @@ const Contact: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24 text-center">
           <div className="space-y-2">
             <h4 className="font-marker text-2xl text-studioOrange uppercase tracking-widest">Onde?</h4>
-            <a href={import.meta.env.VITE_GOOGLE_MAPS_URL || "#"} target="_blank" rel="noopener noreferrer" className="hover:text-studioOrange transition-colors">
-              <p className="font-hand text-2xl md:text-3xl max-w-sm">{import.meta.env.VITE_STUDIO_ADDRESS || "Rua do Som, 73, Bairro Áudio, São Paulo, SP"}</p>
+            <a href={siteConfig.contact.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-studioOrange transition-colors">
+              <p className="font-hand text-2xl md:text-3xl max-w-sm">{siteConfig.contact.address}</p>
             </a>
           </div>
           <div className="space-y-2">
             <h4 className="font-marker text-2xl text-studioOrange uppercase tracking-widest">Email</h4>
-            <a href={`mailto:${import.meta.env.VITE_STUDIO_EMAIL}`} className="hover:text-studioOrange transition-colors">
-              <p className="font-hand text-2xl md:text-3xl">{import.meta.env.VITE_STUDIO_EMAIL || "#"}</p>
+            <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-studioOrange transition-colors">
+              <p className="font-hand text-2xl md:text-3xl">{siteConfig.contact.email}</p>
             </a>
           </div>
         </div>
+
 
         {/* Google Maps Embed */}
         <div className="w-full mt-8 border-8 border-white/10 rounded-3xl overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">

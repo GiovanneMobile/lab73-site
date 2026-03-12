@@ -1,4 +1,5 @@
 import React from 'react';
+import { siteConfig } from '../config/site';
 
 const ConnectWithUs: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const ConnectWithUs: React.FC = () => {
       <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
         <a
           className="flex flex-col items-center gap-2 group transition-all duration-300 hover:scale-110"
-          href={import.meta.env.VITE_INSTAGRAM_URL || "#"}
+          href={siteConfig.social.instagram}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -17,7 +18,7 @@ const ConnectWithUs: React.FC = () => {
         </a>
         <a
           className="flex flex-col items-center gap-2 group transition-all duration-300 hover:scale-110"
-          href={import.meta.env.VITE_YOUTUBE_URL || "#"}
+          href={siteConfig.social.youtube}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -28,5 +29,6 @@ const ConnectWithUs: React.FC = () => {
     </div>
   );
 };
+
 
 export default ConnectWithUs;
