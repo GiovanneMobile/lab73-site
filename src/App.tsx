@@ -12,6 +12,8 @@ import UnderConstruction from './components/UnderConstruction';
 import ConnectWithUs from './components/ConnectWithUs';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import { siteConfig } from './config/site';
+
 
 
 
@@ -61,10 +63,13 @@ const App: React.FC = () => {
             <nav className={`${isMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row gap-2 lg:gap-4 items-end lg:items-center bg-black/90 lg:bg-transparent p-6 lg:p-0 border-2 border-white/20 lg:border-0 rounded-2xl backdrop-blur-md lg:backdrop-blur-none`}>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-3deg]" href="#about">Quem Somos</a>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[2deg]" href="#services">O Que Rola</a>
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[1deg]" href="#gallery">Fotos</a>
+              {siteConfig.features.showGallery && (
+                <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[1deg]" href="#gallery">Fotos</a>
+              )}
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#pricing">Preço$</a>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[3deg]" href="#calendar">Agenda</a>
               <a onClick={() => setIsMenuOpen(false)} className="bg-studioOrange text-black font-marker px-6 py-2 rotate-[-1deg] hover:scale-110 transition-transform shadow-lg border-2 border-black mt-4 lg:mt-0" href="#contact">RESERVA!</a>
+
             </nav>
           </div>
         </div>
@@ -76,7 +81,7 @@ const App: React.FC = () => {
             <div className="absolute -top-20 -left-20 opacity-20 hidden lg:block">
               <span className="material-symbols-outlined !text-[300px] rotate-[-15deg]">music_note</span>
             </div>
-            <div className="relative z-10 border-4 border-dashed border-white/20 p-12 mt-18 md:mt-0 md:p-20 rounded-3xl bg-black/40 backdrop-blur-sm">
+            <div className="relative z-10 border-4 border-dashed border-white/20 p-12 mt-18 md:p-20 rounded-3xl bg-black/40 backdrop-blur-sm">
               <div className="tape-piece -top-6 left-1/4 rotate-6"></div>
               <div className="tape-piece -bottom-6 right-1/4 -rotate-3"></div>
               <h1 className="font-script text-5xl sm:text-7xl md:text-[9rem] leading-[0.8] text-center uppercase tracking-tighter mb-8">
@@ -86,7 +91,8 @@ const App: React.FC = () => {
               <div className="flex flex-col md:flex-row items-center gap-12 mt-12">
                 <div className="flex-1">
                   <p className="font-hand text-xl sm:text-2xl md:text-3xl leading-snug">
-                    Ensaio Profissional, Gravação, Mixagem e Masterização no coração da cidade. Escrito à mão, feito com a alma.
+                    Primeiro estúdio de ensaio da zona sul de Ilhéus, no coração da cidade. <br />
+                    Escrito à mão, feito com a alma.
                   </p>
                 </div>
                 <div className="flex-shrink-0 relative">
@@ -110,12 +116,14 @@ const App: React.FC = () => {
               <div className="font-script text-5xl md:text-7xl text-studioOrange mb-8 rotate-[-2deg]">O que é o Lab 73?</div>
               <div className="space-y-6 text-2xl md:text-3xl font-hand">
                 <p className="relative">
-                  O Lab 73 é um santuário criativo para músicos, produtores e engenheiros de áudio.
+                  O Lab 73 não é só um estúdio, é um laboratório. É um santuário criativo feito por músicos e para músicos.
                   <span className="material-symbols-outlined absolute -right-8 top-0 text-white/20 !text-6xl">graphic_eq</span>
                 </p>
                 <p className="border-l-4 border-studioOrange pl-6 italic">
-                  Equilibrando tecnologia de ponta com uma vibe inspiradora de walkmans e fitas cassete.
+                  Um abrigo confortável para qualquer artista, do underground ao mainstream.
                 </p>
+
+
                 <div className="inline-block border-2 border-white/40 px-4 py-1 rotate-3 font-marker text-xl uppercase">Foco no Ensaio Musical</div>
               </div>
             </div>
@@ -124,10 +132,6 @@ const App: React.FC = () => {
                 <div className="tape-piece -top-4 left-1/3 -rotate-12 opacity-80"></div>
                 <img alt="Studio Gear" className="w-full grayscale brightness-90 border-2 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
                 <div className="font-hand text-black text-center mt-8 text-2xl font-bold">Nossa bagunça organizada</div>
-              </div>
-              <div className="absolute -bottom-10 -right-4 bg-white text-black p-4 rotate-6 shadow-2xl border-2 border-black font-marker">
-                <div className="text-6xl leading-none">10+</div>
-                <div className="text-sm">anos de estrada</div>
               </div>
             </div>
           </div>
@@ -139,20 +143,33 @@ const App: React.FC = () => {
               <h2 className="font-script text-6xl md:text-8xl inline-block border-b-8 border-studioOrange pb-4 rotate-1 text-center">O QUE ROLA</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {servicesConfig.map((s, i) => (
-                <div key={i} className={`relative transition-transform rotate-[${i % 2 === 0 ? '-2deg' : '3deg'}] hover:rotate-0 group`}>
-                  {i === 0 && <div className="tape-piece -top-4 -left-4 rotate-[-45deg] scale-75 z-20"></div>}
-                  {i === 1 && <div className="tape-piece -top-4 right-0 rotate-[15deg] scale-75 z-20"></div>}
-                  {i === 3 && <div className="tape-piece -bottom-4 left-1/4 rotate-2 scale-75 z-20"></div>}
-                  <div className={`${s.dark ? 'bg-studioOrange text-black shadow-2xl' : 'torn-paper'} torn-edge-aggressive p-8 relative z-10 h-full`}>
-                    <span className={`material-symbols-outlined !text-6xl ${s.dark ? '' : 'text-studioOrange'} mb-6`}>{s.icon}</span>
-                    <h3 className="font-marker text-3xl mb-4">{s.title}</h3>
-                    <p className="font-hand text-xl">{s.desc}</p>
-                    <div className={`absolute bottom-4 right-4 font-marker text-4xl ${s.dark ? 'text-black/20' : 'text-black/10'}`}>{s.num}</div>
+              {servicesConfig.map((s, i) => {
+                const isDisabled = (s.title === 'GRAVAÇÃO' && !siteConfig.features.showRecording) ||
+                  (s.title === 'MIXAGEM' && !siteConfig.features.showMixing) ||
+                  (s.title === 'MASTERIZAÇÃO' && !siteConfig.features.showMastering);
+
+                return (
+                  <div key={i} className={`relative transition-transform rotate-[${i % 2 === 0 ? '-2deg' : '3deg'}] hover:rotate-0 group ${isDisabled ? 'card-disabled' : ''}`}>
+                    {i === 0 && <div className="tape-piece -top-4 -left-4 rotate-[-45deg] scale-75 z-20"></div>}
+                    {i === 1 && <div className="tape-piece -top-4 right-0 rotate-[15deg] scale-75 z-20"></div>}
+                    {i === 3 && <div className="tape-piece -bottom-4 left-1/4 rotate-2 scale-75 z-20"></div>}
+                    <div className={`${s.dark ? 'bg-studioOrange text-black shadow-2xl' : 'torn-paper'} torn-edge-aggressive p-8 relative z-10 h-full`}>
+                      <span className={`material-symbols-outlined !text-6xl ${s.dark ? '' : 'text-studioOrange'} mb-6`}>{s.icon}</span>
+                      <h3 className="font-marker text-3xl mb-4">{s.title}</h3>
+                      <p className="font-hand text-xl">{s.desc}</p>
+                      <div className={`absolute bottom-4 right-4 font-marker text-4xl ${s.dark ? 'text-black/20' : 'text-black/10'}`}>{s.num}</div>
+                      {isDisabled && (
+                        <div className="coming-soon-overlay">
+                          <div className="coming-soon-banner">EM BREVE</div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
+
+
           </div>
         </section>
 
@@ -213,36 +230,39 @@ const App: React.FC = () => {
         </section>
 
         {/* Gallery Section */}
-        <section className="py-24 md:py-32 px-6 overflow-hidden" id="gallery">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-4">
-              <h2 className="font-script text-5xl md:text-7xl rotate-[-2deg]">Gig Poster & Flyer Collection</h2>
-              <p className="font-hand text-lg md:text-xl text-studioOrange max-w-xs md:text-right italic">Memórias de palco coladas no fanzine</p>
+        {siteConfig.features.showGallery && (
+          <section className="py-24 md:py-32 px-6 overflow-hidden" id="gallery">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-4">
+                <h2 className="font-script text-5xl md:text-7xl rotate-[-2deg]">Gig Poster & Flyer Collection</h2>
+                <p className="font-hand text-lg md:text-xl text-studioOrange max-w-xs md:text-right italic">Memórias de palco coladas no fanzine</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="relative rotate-[-5deg] gig-poster">
+                  <div className="tape-piece -top-2 left-10 rotate-12 bg-gray-500/30"></div>
+                  <img alt="Gig Poster 1" className="w-full grayscale sepia brightness-75 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
+                  <div className="absolute bottom-4 left-4 right-4 bg-white/90 text-black font-marker text-center py-2 text-sm uppercase">LIVE AT LAB73</div>
+                </div>
+                <div className="relative rotate-[3deg] mt-12 gig-poster">
+                  <div className="tape-piece -top-4 right-4 -rotate-6 bg-gray-500/30"></div>
+                  <img alt="Gig Poster 2" className="w-full grayscale brightness-50 contrast-150 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
+                  <div className="absolute top-4 right-4 bg-red-600 text-white font-marker px-2 rotate-12">SOLD OUT</div>
+                </div>
+                <div className="relative rotate-[-2deg] gig-poster">
+                  <div className="tape-piece bottom-0 left-1/2 -translate-x-1/2 rotate-3 bg-gray-500/30"></div>
+                  <img alt="Gig Poster 3" className="w-full grayscale invert brightness-110 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
+                  <div className="absolute bottom-0 w-full bg-black text-white font-hand text-center py-2 text-xs">SESSÃO DE DOMINGO</div>
+                </div>
+                <div className="relative rotate-[7deg] mt-8 gig-poster">
+                  <div className="tape-piece top-1/2 -left-4 rotate-90 bg-gray-500/30"></div>
+                  <img alt="Gig Poster 4" className="w-full grayscale contrast-125 brightness-75 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
+                  <div className="absolute inset-0 border-8 border-dashed border-white/20 pointer-events-none"></div>
+                </div>
+              </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="relative rotate-[-5deg] gig-poster">
-                <div className="tape-piece -top-2 left-10 rotate-12 bg-gray-500/30"></div>
-                <img alt="Gig Poster 1" className="w-full grayscale sepia brightness-75 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                <div className="absolute bottom-4 left-4 right-4 bg-white/90 text-black font-marker text-center py-2 text-sm uppercase">LIVE AT LAB73</div>
-              </div>
-              <div className="relative rotate-[3deg] mt-12 gig-poster">
-                <div className="tape-piece -top-4 right-4 -rotate-6 bg-gray-500/30"></div>
-                <img alt="Gig Poster 2" className="w-full grayscale brightness-50 contrast-150 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                <div className="absolute top-4 right-4 bg-red-600 text-white font-marker px-2 rotate-12">SOLD OUT</div>
-              </div>
-              <div className="relative rotate-[-2deg] gig-poster">
-                <div className="tape-piece bottom-0 left-1/2 -translate-x-1/2 rotate-3 bg-gray-500/30"></div>
-                <img alt="Gig Poster 3" className="w-full grayscale invert brightness-110 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                <div className="absolute bottom-0 w-full bg-black text-white font-hand text-center py-2 text-xs">SESSÃO DE DOMINGO</div>
-              </div>
-              <div className="relative rotate-[7deg] mt-8 gig-poster">
-                <div className="tape-piece top-1/2 -left-4 rotate-90 bg-gray-500/30"></div>
-                <img alt="Gig Poster 4" className="w-full grayscale contrast-125 brightness-75 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                <div className="absolute inset-0 border-8 border-dashed border-white/20 pointer-events-none"></div>
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
+
 
         {/* Pricing Section */}
         <Pricing />
@@ -315,31 +335,34 @@ const App: React.FC = () => {
 
 
         {/* Feedbacks Section */}
-        <section className="py-16 md:py-32 overflow-hidden relative">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="font-script text-4xl md:text-8xl text-center mb-16 rotate-[-1deg] px-6">
-              O que dizem os feras
-            </h2>
+        {siteConfig.features.showFeedbacks && (
+          <section className="py-16 md:py-32 overflow-hidden relative">
+            <div className="max-w-7xl mx-auto">
+              <h2 className="font-script text-4xl md:text-8xl text-center mb-16 rotate-[-1deg] px-6">
+                O que dizem os feras
+              </h2>
 
-            <div className="flex md:flex-wrap overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:justify-center gap-8 pt-8 pb-12 md:py-0 hide-scrollbar px-[7.5vw] md:px-6">
-              {feedbacks.map((f, i) => (
-                <div key={i} className={`flex-shrink-0 w-[85vw] md:w-[calc(50%-1rem)] snap-center sticky-note p-8 md:p-10 ${f.rotation} hover:rotate-0 transition-transform duration-300 flex flex-col justify-between min-h-[250px] md:min-h-[300px]`}>
-                  <div>
-                    <span className="material-symbols-outlined !text-4xl md:!text-5xl text-black/20 mb-4 block">format_quote</span>
-                    <p className="font-hand text-lg md:text-2xl leading-relaxed text-black">
-                      "{f.text}"
-                    </p>
+              <div className="flex md:flex-wrap overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:justify-center gap-8 pt-8 pb-12 md:py-0 hide-scrollbar px-[7.5vw] md:px-6">
+                {feedbacks.map((f, i) => (
+                  <div key={i} className={`flex-shrink-0 w-[85vw] md:w-[calc(50%-1rem)] snap-center sticky-note p-8 md:p-10 ${f.rotation} hover:rotate-0 transition-transform duration-300 flex flex-col justify-between min-h-[250px] md:min-h-[300px]`}>
+                    <div>
+                      <span className="material-symbols-outlined !text-4xl md:!text-5xl text-black/20 mb-4 block">format_quote</span>
+                      <p className="font-hand text-lg md:text-2xl leading-relaxed text-black">
+                        "{f.text}"
+                      </p>
+                    </div>
+                    <div className="mt-8 text-right">
+                      <span className="font-marker text-lg text-black/60 border-t border-black/10 pt-2 inline-block">
+                        - {f.author}
+                      </span>
+                    </div>
                   </div>
-                  <div className="mt-8 text-right">
-                    <span className="font-marker text-lg text-black/60 border-t border-black/10 pt-2 inline-block">
-                      - {f.author}
-                    </span>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
 
         {/* Contact Section */}
         <Contact />

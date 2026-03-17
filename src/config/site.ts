@@ -1,4 +1,11 @@
 export const siteConfig = {
+  features: {
+    showRecording: false,
+    showMixing: false,
+    showMastering: false,
+    showGallery: true,
+    showFeedbacks: true,
+  },
   social: {
     instagram: "https://www.instagram.com/estudio.lab73/",
     youtube: "https://www.youtube.com/@EstudioLab73",
