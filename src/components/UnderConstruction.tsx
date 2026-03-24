@@ -1,17 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ConnectWithUs from './ConnectWithUs';
 import Footer from './Footer';
 import Contact from './Contact';
+import { siteConfig } from '../config/site';
 
+const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ value, label }) => (
+  <div className="flex flex-col items-center bg-graphite/5 border-2 border-dashed border-graphite/20 p-4 md:p-6 rounded-xl">
+    <span className="font-hand text-5xl md:text-7xl text-studioOrange leading-none">{value}</span>
+    <span className="font-marker text-sm md:text-lg text-graphite/60 mt-2 uppercase tracking-wide">{label}</span>
+  </div>
+);
 
+const Countdown: React.FC = () => {
+  const [timeLeft, setTimeLeft] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  } | null>(null);
 
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const difference = +new Date(siteConfig.launchDate) - +new Date();
+      
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      } else {
+        setTimeLeft(null);
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  if (!timeLeft) return null;
+
+  return (
+    <section className="py-12 w-full max-w-4xl mx-auto px-6 relative" id="countdown-timer">
+      <div className="flex flex-col items-center">
+        <div className="torn-paper bg-[#fcfcfc] p-8 md:p-12 rotate-[0.5deg] shadow-2xl w-full relative">
+          <div className="tape-piece -top-4 left-1/4 -rotate-12 opacity-90"></div>
+          <div className="tape-piece -top-6 right-1/4 rotate-6 opacity-90"></div>
+          
+          <h3 className="font-script text-4xl md:text-5xl text-graphite text-center mb-10 uppercase tracking-tight">
+            Inauguração em:
+          </h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <CountdownUnit value={timeLeft.days.toString().padStart(2, '0')} label="Dias" />
+            <CountdownUnit value={timeLeft.hours.toString().padStart(2, '0')} label="Horas" />
+            <CountdownUnit value={timeLeft.minutes.toString().padStart(2, '0')} label="Minutos" />
+            <CountdownUnit value={timeLeft.seconds.toString().padStart(2, '0')} label="Segundos" />
+          </div>
+          
+          <div className="mt-10 text-center">
+            <p className="font-hand text-2xl md:text-3xl text-graphite/80 italic">
+              O som que você sempre buscou está chegando.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const UnderConstruction: React.FC = () => {
   return (
     <div className="fixed inset-0 z-[1000] bg-graphite overflow-y-auto overflow-x-hidden antialiased selection:bg-studioOrange selection:text-black chalkboard-bg text-white font-body">
-      <main className="relative w-full max-w-4xl mx-auto px-6 min-h-screen flex items-center justify-center">
+      <main className="relative w-full max-w-5xl mx-auto px-6 py-20 min-h-screen flex flex-col items-center">
         <section className="w-full py-12 flex flex-col items-center text-center">
-
 
           {/* Animated peeking note at the top */}
           <div className="relative inline-block mb-12">
@@ -61,11 +125,13 @@ const UnderConstruction: React.FC = () => {
             Estamos afinando os instrumentos e rabiscando o layout. Volte logo para ver o novo Lab 73!
           </p>
 
-          <div className="mt-16 relative w-full max-w-2xl mx-auto flex flex-col items-center">
+          <Countdown />
+
+          <div className="mt-8 relative w-full max-w-2xl mx-auto flex flex-col items-center">
             <ConnectWithUs />
           </div>
 
-          <div className="w-full">
+          <div className="w-full mt-12">
             <Contact />
           </div>
 
