@@ -152,5 +152,24 @@
     filter: grayscale(0.6);
     pointer-events: none;
   }
+  .scribble-strikethrough {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .scribble-strikethrough::after {
+    content: '';
+    position: absolute;
+    left: -5%;
+    top: 50%;
+    width: 110%;
+    height: 6px;
+    background-color: #ef4444;
+    transform: translateY(-50%) rotate(-1deg);
+    opacity: 0.6;
+    pointer-events: none;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="10"><path d="M0,5 C20,4.5 40,5.5 60,5 C80,4.5 100,5.5 120,5" stroke="black" fill="transparent" stroke-width="4" stroke-linecap="round"/></svg>');
+    mask-size: 100% 100%;
+  }
 }
 
