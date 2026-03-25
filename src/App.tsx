@@ -12,13 +12,8 @@ import UnderConstruction from './components/UnderConstruction';
 import ConnectWithUs from './components/ConnectWithUs';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import WhatsAppButton from './components/WhatsAppButton';
 import { siteConfig } from './config/site';
-
-
-
-
-
-
 
 const App: React.FC = () => {
   const isUnderConstruction = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
@@ -372,7 +367,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
-
+      <WhatsAppButton />
     </div>
   );
 };
