@@ -3,6 +3,7 @@ import ConnectWithUs from './ConnectWithUs';
 import Footer from './Footer';
 import Contact from './Contact';
 import { siteConfig } from '../config/site';
+import WhatsAppButton from './WhatsAppButton';
 
 const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ value, label }) => (
   <div className="flex flex-col items-center bg-graphite/5 border-2 border-dashed border-graphite/20 p-4 md:p-6 rounded-xl">
@@ -141,6 +142,7 @@ const UnderConstruction: React.FC = () => {
 
         </section>
       </main>
+      <WhatsAppButton />
     </div>
   );
 };

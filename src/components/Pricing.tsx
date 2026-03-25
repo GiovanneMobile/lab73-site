@@ -33,23 +33,31 @@ const CountdownTimer: React.FC = () => {
   if (!timeLeft) return null;
 
   return (
-    <div className="mt-8 flex flex-col items-center">
-      <p className="font-marker text-lg text-studioOrange mb-2">PROMOÇÃO ACABA EM:</p>
-      <div className="flex gap-4 font-marker text-3xl md:text-4xl text-black">
+    <div className="mt-8 flex flex-col items-center w-full overflow-hidden">
+      <p className="font-marker text-sm md:text-lg text-studioOrange mb-2">PROMOÇÃO ACABA EM:</p>
+      <div className="flex gap-1 md:gap-4 font-marker text-xl sm:text-3xl md:text-4xl text-black justify-center w-full">
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 px-3 py-1 border-2 border-black/10 rounded shadow-sm">{timeLeft.days}d</span>
+          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+            {timeLeft.days}d
+          </span>
         </div>
-        <span>:</span>
+        <span className="self-center">:</span>
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 px-3 py-1 border-2 border-black/10 rounded shadow-sm">{timeLeft.hours.toString().padStart(2, '0')}h</span>
+          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+            {timeLeft.hours.toString().padStart(2, '0')}h
+          </span>
         </div>
-        <span>:</span>
+        <span className="self-center">:</span>
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 px-3 py-1 border-2 border-black/10 rounded shadow-sm">{timeLeft.minutes.toString().padStart(2, '0')}m</span>
+          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+            {timeLeft.minutes.toString().padStart(2, '0')}m
+          </span>
         </div>
-        <span>:</span>
+        <span className="self-center">:</span>
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 px-3 py-1 border-2 border-black/10 rounded shadow-sm">{timeLeft.seconds.toString().padStart(2, '0')}s</span>
+          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+            {timeLeft.seconds.toString().padStart(2, '0')}s
+          </span>
         </div>
       </div>
     </div>
@@ -58,12 +66,12 @@ const CountdownTimer: React.FC = () => {
 
 const Pricing: React.FC = () => {
   return (
-    <section className="py-32 px-6" id="pricing">
-      <div className="max-w-4xl mx-auto torn-paper notebook-paper p-12 md:p-20 shadow-[20px_20px_0px_#f97316] rotate-1 relative">
+    <section className="py-20 md:py-32 px-4 md:px-6" id="pricing">
+      <div className="max-w-4xl mx-auto torn-paper notebook-paper p-6 md:p-20 shadow-[10px_10px_0px_#f97316] md:shadow-[20px_20px_0px_#f97316] rotate-1 relative">
         <div className="tape-piece -top-6 left-10 rotate-[-20deg] opacity-60"></div>
         <div className="tape-piece -top-6 right-10 rotate-[20deg] opacity-60"></div>
 
-        <h2 className="font-script text-6xl md:text-7xl mb-16 text-center underline decoration-studioOrange decoration-8 underline-offset-8 uppercase text-black">
+        <h2 className="font-script text-4xl sm:text-5xl md:text-7xl mb-10 md:mb-16 text-center underline decoration-studioOrange decoration-4 md:decoration-8 underline-offset-4 md:underline-offset-8 uppercase text-black">
           TABELA DE PREÇO$
         </h2>
 
@@ -87,16 +95,16 @@ const Pricing: React.FC = () => {
               <div className={`${item.highlight ? 'flex flex-col md:flex-row justify-between items-center w-full gap-4' : 'flex items-center gap-4'}`}>
                 {item.highlight && <div className="text-black/60 text-center md:text-left flex-1">{item.description}</div>}
                 
-                <div className="flex items-center gap-4 whitespace-nowrap">
+                <div className="flex items-center gap-3 md:gap-4 whitespace-nowrap">
                   {item.originalPrice && (
-                    <div className="scribble-strikethrough text-4xl text-black/40 font-marker">
+                    <div className="scribble-strikethrough text-2xl md:text-4xl text-black/40 font-marker">
                       R$ {item.originalPrice}
                     </div>
                   )}
                   <div className={`font-marker ${
                     item.highlight 
-                      ? 'text-6xl bg-white px-2 border-2 border-black rotate-[-2deg]' 
-                      : `text-5xl text-studioOrange px-2 border border-black/20 ${index % 2 === 0 ? 'bg-yellow-200 rotate-[-5deg]' : 'bg-yellow-100 rotate-[3deg]'}`
+                      ? 'text-4xl md:text-6xl bg-white px-2 border-2 border-black rotate-[-2deg]' 
+                      : `text-3xl md:text-5xl text-studioOrange px-2 border border-black/20 ${index % 2 === 0 ? 'bg-yellow-200 rotate-[-5deg]' : 'bg-yellow-100 rotate-[3deg]'}`
                   }`}>
                     R$ {item.price}
                   </div>
@@ -108,16 +116,16 @@ const Pricing: React.FC = () => {
 
         <CountdownTimer />
 
-        <div className="flex flex-col md:flex-row items-center mt-16 gap-10 md:justify-between">
+        <div className="flex flex-col md:flex-row items-center mt-12 md:mt-16 gap-8 md:justify-between">
           <div className="sticky-note bg-yellow-100 rotate-[-1.5deg] max-w-sm relative shadow-lg p-6 flex-1 text-center md:text-left">
             <div className="tape-piece -top-3 left-1/4 -translate-x-1/2 w-16 h-6 opacity-40"></div>
-            <p className="font-hand text-xl text-black">
+            <p className="font-hand text-lg md:text-xl text-black">
               Esta oferta especial é exclusiva para o seu <span className="underline decoration-studioOrange decoration-2">primeiro ensaio</span>! Não perca tempo!
             </p>
           </div>
           
           <div className="rotate-[2deg] shrink-0">
-            <span className="inline-block border-4 border-red-600 text-red-600 px-8 py-3 font-marker text-2xl uppercase font-bold shadow-lg">
+            <span className="inline-block border-2 md:border-4 border-red-600 text-red-600 px-6 md:px-8 py-2 md:py-3 font-marker text-xl md:text-2xl uppercase font-bold shadow-lg">
               Vagas Limitadas
             </span>
           </div>

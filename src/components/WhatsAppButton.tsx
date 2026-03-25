@@ -10,11 +10,11 @@ const WhatsAppButton: React.FC = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 right-8 z-[200] group flex items-center gap-3 pointer-events-auto"
+      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[200] group flex items-center gap-3 pointer-events-auto"
       aria-label="Contato via WhatsApp"
     >
       {/* Floating Tooltip */}
-      <div className="bg-white text-black font-marker px-4 py-2 border-2 border-black shadow-[4px_4px_0px_#000] opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 pointer-events-none scale-0 group-hover:scale-100 origin-right">
+      <div className="bg-white text-black font-marker px-4 py-2 border-2 border-black shadow-[4px_4px_0px_#000] opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 pointer-events-none scale-0 group-hover:scale-100 origin-right hidden md:block">
         FALE COM A GENTE!
       </div>
 
@@ -24,9 +24,9 @@ const WhatsAppButton: React.FC = () => {
         <div className="rotate-[10deg] absolute inset-0 bg-whatsapp/40 animate-ring z-0"></div>
         <div className="rotate-[10deg] absolute inset-0 bg-whatsapp/20 animate-ring [animation-delay:0.5s] z-0"></div>
 
-        <div className="rotate-[10deg] relative bg-whatsapp p-4 border-4 border-black shadow-[8px_8px_0px_#000] group-hover:shadow-[4px_4px_0px_#000] group-hover:translate-x-1 group-hover:translate-y-1 transition-all duration-200 z-10">
+        <div className="rotate-[10deg] relative bg-whatsapp p-3 md:p-4 border-2 md:border-4 border-black shadow-[4px_4px_0px_#000] md:shadow-[8px_8px_0px_#000] group-hover:shadow-[4px_4px_0px_#000] group-hover:translate-x-1 group-hover:translate-y-1 transition-all duration-200 z-10">
           <svg
-            className="w-10 h-10 text-black fill-current"
+            className="w-8 h-8 md:w-10 md:h-10 text-black fill-current"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -35,7 +35,7 @@ const WhatsAppButton: React.FC = () => {
         </div>
 
         {/* Tape piece to match aesthetic */}
-        <div className="absolute -top-3 -left-3 w-12 h-6 bg-white/40 rotate-[-45deg] z-10 pointer-events-none"></div>
+        <div className="absolute -top-2 -left-2 md:-top-3 md:-left-3 w-8 md:w-12 h-4 md:h-6 bg-white/40 rotate-[-45deg] z-10 pointer-events-none"></div>
       </div>
     </a>
   );
