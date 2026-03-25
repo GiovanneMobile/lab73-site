@@ -1,5 +1,5 @@
 export const siteConfig = {
-  launchDate: "2026-06-01T00:00:00",
+  launchDate: "",
   features: {
     showRecording: false,
     showMixing: false,
