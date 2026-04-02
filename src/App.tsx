@@ -13,6 +13,7 @@ import ConnectWithUs from './components/ConnectWithUs';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
 import WhatsAppButton from './components/WhatsAppButton';
+import Gallery from './components/Gallery';
 import { siteConfig } from './config/site';
 
 const App: React.FC = () => {
@@ -226,36 +227,7 @@ const App: React.FC = () => {
 
         {/* Gallery Section */}
         {siteConfig.features.showGallery && (
-          <section className="py-24 md:py-32 px-6 overflow-hidden" id="gallery">
-            <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-4">
-                <h2 className="font-script text-5xl md:text-7xl rotate-[-2deg]">Gig Poster & Flyer Collection</h2>
-                <p className="font-hand text-lg md:text-xl text-studioOrange max-w-xs md:text-right italic">Memórias de palco coladas no fanzine</p>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div className="relative rotate-[-5deg] gig-poster">
-                  <div className="tape-piece -top-2 left-10 rotate-12 bg-gray-500/30"></div>
-                  <img alt="Gig Poster 1" className="w-full grayscale sepia brightness-75 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                  <div className="absolute bottom-4 left-4 right-4 bg-white/90 text-black font-marker text-center py-2 text-sm uppercase">LIVE AT LAB73</div>
-                </div>
-                <div className="relative rotate-[3deg] mt-12 gig-poster">
-                  <div className="tape-piece -top-4 right-4 -rotate-6 bg-gray-500/30"></div>
-                  <img alt="Gig Poster 2" className="w-full grayscale brightness-50 contrast-150 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                  <div className="absolute top-4 right-4 bg-red-600 text-white font-marker px-2 rotate-12">SOLD OUT</div>
-                </div>
-                <div className="relative rotate-[-2deg] gig-poster">
-                  <div className="tape-piece bottom-0 left-1/2 -translate-x-1/2 rotate-3 bg-gray-500/30"></div>
-                  <img alt="Gig Poster 3" className="w-full grayscale invert brightness-110 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                  <div className="absolute bottom-0 w-full bg-black text-white font-hand text-center py-2 text-xs">SESSÃO DE DOMINGO</div>
-                </div>
-                <div className="relative rotate-[7deg] mt-8 gig-poster">
-                  <div className="tape-piece top-1/2 -left-4 rotate-90 bg-gray-500/30"></div>
-                  <img alt="Gig Poster 4" className="w-full grayscale contrast-125 brightness-75 aspect-[3/4] object-cover border-4 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
-                  <div className="absolute inset-0 border-8 border-dashed border-white/20 pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <Gallery />
         )}
 
 
