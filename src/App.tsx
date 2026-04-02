@@ -15,6 +15,7 @@ import Contact from './components/Contact';
 import WhatsAppButton from './components/WhatsAppButton';
 import Gallery from './components/Gallery';
 import { siteConfig } from './config/site';
+import heroImage from './assets/hero.png';
 
 const App: React.FC = () => {
   const isUnderConstruction = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
@@ -72,9 +73,20 @@ const App: React.FC = () => {
       </header>
 
       <main className="relative">
-        <section className="min-h-screen flex items-center justify-center p-6" id="home">
-          <div className="relative w-full max-w-5xl">
-            <div className="absolute -top-20 -left-20 opacity-20 hidden lg:block">
+        <section className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden" id="home">
+          {/* Background Image with Cinematic Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={heroImage} 
+              className="w-full h-full object-cover opacity-40 grayscale"
+              alt="Studio Atmosphere"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-transparent to-[#1a1a1a]"></div>
+            <div className="absolute inset-0 bg-black/20"></div>
+          </div>
+
+          <div className="relative w-full max-w-5xl z-10">
+            <div className="absolute -top-20 -left-20 opacity-10 hidden lg:block">
               <span className="material-symbols-outlined !text-[300px] rotate-[-15deg]">music_note</span>
             </div>
             <div className="relative z-10 border-4 border-dashed border-white/20 p-12 mt-18 md:p-20 rounded-3xl bg-black/40 backdrop-blur-sm">
