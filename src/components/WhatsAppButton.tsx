@@ -1,9 +1,10 @@
 import React from 'react';
+import { siteConfig } from '../config/site';
 
 const WhatsAppButton: React.FC = () => {
-  const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '+557399439197';
-  const message = encodeURIComponent('Olá! Gostaria de saber mais sobre o Lab 73.');
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${message}`;
+  const phoneNumber = siteConfig.contact.whatsapp;
+  const message = encodeURIComponent('QUERO TOCAAAARRGGH!!');
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
     <a

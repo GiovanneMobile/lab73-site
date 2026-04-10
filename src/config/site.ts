@@ -13,6 +13,7 @@ export const siteConfig = {
   },
   contact: {
     email: "estudio.lab73@gmail.com",
+    whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER?.replace(/\D/g, '') || "557399439197",
     address: "R. Parque Verde, 204, Hernani Sá, Ilhéus - BA",
     googleMapsUrl: "https://www.google.com/maps?gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIGCAIQABgeMgYIAxAAGB4yBggEEAAYHjIGCAUQABgeMgYIBhBFGDwyBggHEEUYPNIBCDI0MzNqMGo0qAIAsAIB&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KUe4v4u6oTkHMebi30m046Sy&daddr=R.+Parque+Verde+-+Hernani+S%C3%A1,+Ilh%C3%A9us+-+BA,+45656-623",
   }

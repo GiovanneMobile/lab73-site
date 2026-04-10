@@ -97,6 +97,19 @@
     background-size: 10px 10px;
     opacity: 0.2;
   }
+  .price-card-torn {
+    background: #fdfdfd;
+    color: #1a1a1a;
+    position: relative;
+    padding: 2.5rem 1.5rem;
+    clip-path: polygon(
+        1% 2%, 99% 1%, 100% 98%, 2% 99%
+    );
+    transition: all 0.3s ease;
+  }
+  .price-card-torn:hover {
+    transform: scale(1.02) rotate(0deg) !important;
+  }
   .chalk-logo {
     filter: drop-shadow(0 0 2px rgba(255,255,255,0.3)) contrast(0.8) brightness(1.2);
     opacity: 0.6;

@@ -12,6 +12,43 @@ const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ va
   </div>
 );
 
+const PricingCard: React.FC<{
+  title: string;
+  duration: string;
+  oldPrice?: string;
+  price: string;
+  features?: string[];
+  isPopular?: boolean;
+}> = ({ title, duration, oldPrice, price, features, isPopular }) => (
+  <div className={`relative flex flex-col items-center text-center p-10 md:p-12 bg-[#1a1a1a] border-2 border-dashed border-white/20 rounded-[40px] transition-all duration-300 hover:scale-105 group h-full`}>
+    {isPopular && (
+      <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-studioOrange text-black font-marker px-6 py-4 rotate-2 shadow-2xl z-30 text-xl leading-none uppercase flex flex-col items-center justify-center">
+        <span>MAIS</span>
+        <span>POPULAR</span>
+      </div>
+    )}
+    <h4 className="font-marker text-xl text-studioOrange mb-2 uppercase tracking-widest">{title}</h4>
+    <p className="font-hand text-4xl md:text-5xl text-white mb-6 uppercase tracking-tighter whitespace-nowrap">{duration}</p>
+
+    <div className="mb-6 flex flex-col items-center whitespace-nowrap">
+      {oldPrice && (
+        <span className="font-marker text-xl text-white/30 line-through decoration-red-500/50 mb-1">{oldPrice}</span>
+      )}
+      <span className="font-hand text-6xl md:text-7xl text-white tracking-tighter">R$ {price}</span>
+    </div>
+
+    {features && features.length > 0 && (
+      <ul className="font-hand text-lg md:text-xl space-y-4 text-white/80 mt-auto">
+        {features.map((feature, index) => (
+          <li key={index}>
+            {feature}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
+
 const Countdown: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
@@ -23,7 +60,7 @@ const Countdown: React.FC = () => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const difference = +new Date(siteConfig.launchDate) - +new Date();
-      
+
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -49,18 +86,18 @@ const Countdown: React.FC = () => {
         <div className="torn-paper bg-[#fcfcfc] p-8 md:p-12 rotate-[0.5deg] shadow-2xl w-full relative">
           <div className="tape-piece -top-4 left-1/4 -rotate-12 opacity-90"></div>
           <div className="tape-piece -top-6 right-1/4 rotate-6 opacity-90"></div>
-          
+
           <h3 className="font-script text-4xl md:text-5xl text-graphite text-center mb-10 uppercase tracking-tight">
             Inauguração em:
           </h3>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <CountdownUnit value={timeLeft.days.toString().padStart(2, '0')} label="Dias" />
             <CountdownUnit value={timeLeft.hours.toString().padStart(2, '0')} label="Horas" />
             <CountdownUnit value={timeLeft.minutes.toString().padStart(2, '0')} label="Minutos" />
             <CountdownUnit value={timeLeft.seconds.toString().padStart(2, '0')} label="Segundos" />
           </div>
-          
+
           <div className="mt-10 text-center">
             <p className="font-hand text-2xl md:text-3xl text-graphite/80 italic">
               O som que você sempre buscou está chegando.
@@ -128,6 +165,55 @@ const UnderConstruction: React.FC = () => {
 
           <Countdown />
 
+          {/* New Pricing Section */}
+          <section className="py-24 w-full max-w-6xl mx-auto px-6 relative" id="pricing">
+            <div className="text-center mb-16">
+              <h2 className="font-script text-6xl md:text-7xl text-white mb-4 uppercase tracking-tighter">PREÇOS PRÉ-INAUGURAÇÃO</h2>
+              <p className="font-hand text-3xl text-studioOrange">Tá com pressa pra conhecer logo o pico? Chega aí!</p>
+            </div>
+
+            <div className="relative">
+              {/* Decorative tape pieces for the whole section */}
+              <div className="absolute tape-piece rotate-[-45deg] opacity-60 hidden md:block"></div>
+              <div className="absolute -right-12 tape-piece rotate-[45deg] opacity-60 hidden md:block"></div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto">
+                <PricingCard
+                  title="SESSÃO RÁPIDA"
+                  duration="2 HORAS"
+                  price="80"
+                />
+                <PricingCard
+                  title="HIT MAKER"
+                  duration="3 HORAS"
+                  price="90"
+                  isPopular
+                />
+                <PricingCard
+                  title="FULL EXPERIENCE"
+                  duration="4 HORAS"
+                  price="120"
+                />
+              </div>
+            </div>
+
+            <div className="text-center mt-16">
+              <p className="font-hand text-3xl">* preços promocionais de pré-inauguração.</p>
+              <p className="font-hand text-3xl mt-2">Vão durar <span className="text-studioOrange">SOMENTE ATÉ A INAUGURAÇÃO</span>.</p>
+            </div>
+
+            <div className="mt-16 flex justify-center">
+              <a
+                href={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('QUERO TOCAAAARRGGH!!')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-600 text-white font-marker text-2xl px-10 py-5 rounded-full hover:scale-105 transition-transform flex items-center gap-4 shadow-2xl border-4 border-black/20"
+              >
+                RESERVAR VIA WHATSAPP <span className="material-symbols-outlined !text-3xl">chat</span>
+              </a>
+            </div>
+          </section>
+
           <div className="mt-8 relative w-full max-w-2xl mx-auto flex flex-col items-center">
             <ConnectWithUs />
           </div>
@@ -143,7 +229,7 @@ const UnderConstruction: React.FC = () => {
         </section>
       </main>
       <WhatsAppButton />
-    </div>
+    </div >
   );
 };
 
