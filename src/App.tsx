@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import Logo from './components/Logo';
 
-import { calendarConfig } from './config/calendar';
 import { headerPhrases } from './config/phrases';
 import { visitedBands } from './config/bands';
 import { feedbacks } from './config/feedbacks';
@@ -250,57 +249,38 @@ const App: React.FC = () => {
         {/* Calendar Section */}
         <section className="py-24 md:py-32 px-6" id="calendar">
           <div className="max-w-7xl mx-auto">
-            <div className="whiteboard-grid p-8 shadow-2xl relative rotate-[-1deg]">
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-zinc-700 h-6 w-32 rounded-full border-4 border-zinc-600"></div>
-              <div className="flex flex-col md:flex-row justify-between items-center mb-10">
-                <h2 className="font-marker text-2xl md:text-4xl text-black flex items-center gap-3">
-                  <span className="material-symbols-outlined text-studioOrange !text-2xl md:!text-4xl">calendar_month</span>
-                  AGENDA: {calendarConfig.title}
-                </h2>
-                <div className="text-black font-hand text-xl italic mt-4 md:mt-0 underline decoration-studioOrange decoration-2">
-                  * Atualizado agora mesmo
+            <div className="text-center mb-16">
+              <h2 className="font-script text-6xl md:text-8xl inline-block border-b-8 border-studioOrange pb-4 rotate-1 text-center font-bold uppercase transition-transform hover:scale-105 duration-300">
+                NOSSA AGENDA
+              </h2>
+            </div>
+            
+            <div className="relative">
+              {/* Decorative tape for the calendar frame */}
+              <div className="tape-piece -top-6 left-1/4 rotate-[-6deg] z-20"></div>
+              <div className="tape-piece -top-8 right-1/3 rotate-[8deg] z-20 opacity-70"></div>
+              
+              <div className="w-full border-8 border-white/10 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-[#1a1a1a] p-1 md:p-3 relative z-10 transition-all duration-500 hover:border-studioOrange/30">
+                <div className="aspect-square md:aspect-video w-full min-h-[500px] md:min-h-[600px]">
+                  <iframe 
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FBahia&showPrint=0&showTitle=0&showTabs=0&mode=WEEK&showTz=0&src=ZXN0dWRpby5sYWI3M0BnbWFpbC5jb20&color=%23ef6c00" 
+                    style={{ border: 0, width: '100%', height: '100%' }} 
+                    frameBorder="0" 
+                    scrolling="no"
+                    title="Google Calendar"
+                    className="rounded-xl"
+                  ></iframe>
                 </div>
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                {calendarConfig.periods.map((period, pIdx) => (
-                  <div key={pIdx}>
-                    <h3 className="font-marker text-2xl text-black/60 mb-4 text-center">{period.label}</h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-black border-collapse border-2 border-black/10">
-                        <thead>
-                          <tr className="font-marker text-lg border-b-4 border-black/20">
-                            <th className="p-2 border-r-2 border-black/10">HORA</th>
-                            {calendarConfig.days.map(d => <th key={d} className="p-2 border-r-2 border-black/10">{d}</th>)}
-                          </tr>
-                        </thead>
-                        <tbody className="font-hand text-sm">
-                          {calendarConfig.times.map((time, tIdx) => (
-                            <tr key={time} className={`border-b border-black/5 h-16 ${tIdx === 10 ? 'h-16' : ''}`}>
-                              <td className="p-1 font-bold border-r-2 border-black/10 text-center">{time}</td>
-                              {calendarConfig.days.map(day => {
-                                const isBooked = period.bookedSlots.some(slot => {
-                                  const parts = slot.split('-');
-                                  if (parts.length === 2) return parts[0] === day && parts[1] === time;
-                                  if (parts.length === 3) {
-                                    const [sDay, start, end] = parts;
-                                    return sDay === day && time >= start && time < end;
-                                  }
-                                  return false;
-                                });
-                                return (
-                                  <td key={day} className={`p-1 text-center ${isBooked ? 'erased-slot' : 'bg-studioOrange text-white font-bold cursor-pointer'}`}>
-                                    {isBooked ? 'BOOK' : 'LIVRE'}
-                                  </td>
-                                );
-                              })}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              
+              <div className="tape-piece -bottom-6 left-1/3 rotate-[-3deg] z-20 scale-110"></div>
+              <div className="tape-piece -bottom-10 right-1/4 rotate-[15deg] z-20 opacity-60"></div>
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="font-hand text-2xl md:text-3xl text-studioOrange italic">
+                * Escolha seu horário e fale com a gente ali embaixo!
+              </p>
             </div>
           </div>
         </section>

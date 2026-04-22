@@ -201,16 +201,29 @@ const UnderConstruction: React.FC = () => {
               <p className="font-hand text-3xl">* preços promocionais de pré-inauguração.</p>
               <p className="font-hand text-3xl mt-2">Vão durar <span className="text-studioOrange">SOMENTE ATÉ A INAUGURAÇÃO</span>.</p>
             </div>
+          </section>
 
-            <div className="mt-16 flex justify-center">
-              <a
-                href={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('QUERO TOCAAAARRGGH!!')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-600 text-white font-marker text-2xl px-10 py-5 rounded-full hover:scale-105 transition-transform flex items-center gap-4 shadow-2xl border-4 border-black/20"
-              >
-                RESERVAR VIA WHATSAPP <span className="material-symbols-outlined !text-3xl">chat</span>
-              </a>
+          {/* Calendar Section */}
+          <section className="py-24 w-full max-w-6xl mx-auto px-6 relative" id="calendar">
+            <div className="text-center mb-16">
+              <h2 className="font-script text-6xl md:text-7xl text-white mb-4 uppercase tracking-tighter">AGENDA DE ENSAIOS</h2>
+              <p className="font-hand text-3xl text-studioOrange">Veja os horários livres e garanta o seu!</p>
+            </div>
+
+            <div className="relative">
+              <div className="tape-piece -top-6 left-1/4 rotate-[-6deg] z-20"></div>
+              <div className="w-full border-8 border-white/10 rounded-3xl overflow-hidden shadow-2xl bg-[#1a1a1a] p-1 md:p-3 relative z-10">
+                <div className="aspect-square md:aspect-video w-full min-h-[500px] md:min-h-[600px]">
+                  <iframe
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FBahia&showPrint=0&showTitle=0&showTabs=0&mode=WEEK&showTz=0&src=ZXN0dWRpby5sYWI3M0BnbWFpbC5jb20&color=%23ef6c00"
+                    style={{ border: 0, width: '100%', height: '100%' }}
+                    frameBorder="0"
+                    scrolling="no"
+                    title="Google Calendar"
+                    className="rounded-xl"
+                  ></iframe>
+                </div>
+              </div>
             </div>
           </section>
 
