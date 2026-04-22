@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Contact from './Contact';
 import { siteConfig } from '../config/site';
 import WhatsAppButton from './WhatsAppButton';
+import { preLaunchPricing } from '../config/preLaunch';
 
 const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ value, label }) => (
   <div className="flex flex-col items-center bg-graphite/5 border-2 border-dashed border-graphite/20 p-4 md:p-6 rounded-xl">
@@ -32,7 +33,7 @@ const PricingCard: React.FC<{
 
     <div className="mb-6 flex flex-col items-center whitespace-nowrap">
       {oldPrice && (
-        <span className="font-marker text-xl text-white/30 line-through decoration-red-500/50 mb-1">{oldPrice}</span>
+        <span className="font-marker text-3xl md:text-4xl text-white/30 line-through decoration-red-500/50 mb-1">{oldPrice}</span>
       )}
       <span className="font-hand text-6xl md:text-7xl text-white tracking-tighter">R$ {price}</span>
     </div>
@@ -166,7 +167,7 @@ const UnderConstruction: React.FC = () => {
           <Countdown />
 
           {/* New Pricing Section */}
-          <section className="py-24 w-full max-w-6xl mx-auto px-6 relative" id="pricing">
+          <section className="pt-24 w-full max-w-6xl mx-auto px-6 relative" id="pricing">
             <div className="text-center mb-16">
               <h2 className="font-script text-6xl md:text-7xl text-white mb-4 uppercase tracking-tighter">PREÇOS PRÉ-INAUGURAÇÃO</h2>
               <p className="font-hand text-3xl text-studioOrange">Tá com pressa pra conhecer logo o pico? Chega aí!</p>
@@ -178,22 +179,16 @@ const UnderConstruction: React.FC = () => {
               <div className="absolute -right-12 tape-piece rotate-[45deg] opacity-60 hidden md:block"></div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto">
-                <PricingCard
-                  title="SESSÃO RÁPIDA"
-                  duration="2 HORAS"
-                  price="80"
-                />
-                <PricingCard
-                  title="HIT MAKER"
-                  duration="3 HORAS"
-                  price="90"
-                  isPopular
-                />
-                <PricingCard
-                  title="FULL EXPERIENCE"
-                  duration="4 HORAS"
-                  price="120"
-                />
+                {preLaunchPricing.map((item, index) => (
+                  <PricingCard
+                    key={index}
+                    title={item.title}
+                    duration={item.duration}
+                    oldPrice={`R$ ${item.originalPrice}`}
+                    price={item.price}
+                    isPopular={item.isPopular}
+                  />
+                ))}
               </div>
             </div>
 

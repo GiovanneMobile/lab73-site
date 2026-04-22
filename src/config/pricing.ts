@@ -16,8 +16,14 @@ export const pricingConfig: PricingItem[] = [
   {
     title: "3 horas",
     description: "Ideal para 4 pessoas ou mais",
-    price: "100",
+    price: "90",
     originalPrice: "120",
+  },
+  {
+    title: "4 horas",
+    description: "Ideal para passa o setlist inteiro",
+    price: "120",
+    originalPrice: "140",
   },
   {
     title: "Combo Promo",
