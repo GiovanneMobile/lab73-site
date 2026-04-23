@@ -14,6 +14,9 @@ import Contact from './components/Contact';
 import WhatsAppButton from './components/WhatsAppButton';
 import Gallery from './components/Gallery';
 import { siteConfig } from './config/site';
+import Calendar from './components/Calendar';
+import ReviewRequest from './components/ReviewRequest';
+import FeedbackCarousel from './components/FeedbackCarousel';
 import heroImage from './assets/hero.png';
 
 const App: React.FC = () => {
@@ -41,7 +44,6 @@ const App: React.FC = () => {
       <header className="fixed top-0 left-0 w-full z-[100] p-4 md:p-6 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-start">
           <div className="pointer-events-auto">
-            <div className="tape-piece -top-2 -left-4 rotate-[-12deg] opacity-60"></div>
             <div className="bg-white text-black p-2 font-marker rotate-[-2deg] border-2 border-black shadow-xl scale-75 md:scale-100 origin-top-left transition-transform">
               <Logo gap="gap-4 md:gap-6" iconHeight="h-10 md:h-15" labHeight="h-6 md:h-10" />
               <div className="text-[12px] md:text-[18px] text-center mt-1 border-t border-black uppercase whitespace-pre-line leading-tight mx-auto">{randomPhrase}</div>
@@ -75,8 +77,8 @@ const App: React.FC = () => {
         <section className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden" id="home">
           {/* Background Image with Cinematic Overlay */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src={heroImage} 
+            <img
+              src={heroImage}
               className="w-full h-full object-cover opacity-40 grayscale"
               alt="Studio Atmosphere"
             />
@@ -254,32 +256,19 @@ const App: React.FC = () => {
                 NOSSA AGENDA
               </h2>
             </div>
-            
+
             <div className="relative">
               {/* Decorative tape for the calendar frame */}
-              <div className="tape-piece -top-6 left-1/4 rotate-[-6deg] z-20"></div>
               <div className="tape-piece -top-8 right-1/3 rotate-[8deg] z-20 opacity-70"></div>
-              
+
               <div className="w-full border-8 border-white/10 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-[#1a1a1a] p-1 md:p-3 relative z-10 transition-all duration-500 hover:border-studioOrange/30">
-                <div className="aspect-square md:aspect-video w-full min-h-[500px] md:min-h-[600px]">
-                  <iframe 
-                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FBahia&showPrint=0&showTitle=0&showTabs=0&mode=WEEK&showTz=0&src=ZXN0dWRpby5sYWI3M0BnbWFpbC5jb20&color=%23ef6c00" 
-                    style={{ border: 0, width: '100%', height: '100%' }} 
-                    frameBorder="0" 
-                    scrolling="no"
-                    title="Google Calendar"
-                    className="rounded-xl"
-                  ></iframe>
-                </div>
+                <Calendar />
               </div>
-              
-              <div className="tape-piece -bottom-6 left-1/3 rotate-[-3deg] z-20 scale-110"></div>
-              <div className="tape-piece -bottom-10 right-1/4 rotate-[15deg] z-20 opacity-60"></div>
             </div>
 
             <div className="text-center mt-12">
-              <p className="font-hand text-2xl md:text-3xl text-studioOrange italic">
-                * Escolha seu horário e fale com a gente ali embaixo!
+              <p className="font-hand text-2xl md:text-3xl italic">
+                * Agendamentos devem ser feitos com <span className="text-studioOrange">no mínimo 24 horas de antecedência</span> !
               </p>
             </div>
           </div>
@@ -295,33 +284,10 @@ const App: React.FC = () => {
 
         {/* Feedbacks Section */}
         {siteConfig.features.showFeedbacks && (
-          <section className="py-16 md:py-32 overflow-hidden relative">
-            <div className="max-w-7xl mx-auto">
-              <h2 className="font-script text-4xl md:text-8xl text-center mb-16 rotate-[-1deg] px-6">
-                O que dizem os feras
-              </h2>
-
-              <div className="flex md:flex-wrap overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:justify-center gap-8 pt-8 pb-12 md:py-0 hide-scrollbar px-[7.5vw] md:px-6">
-                {feedbacks.map((f, i) => (
-                  <div key={i} className={`flex-shrink-0 w-[85vw] md:w-[calc(50%-1rem)] snap-center sticky-note p-8 md:p-10 ${f.rotation} hover:rotate-0 transition-transform duration-300 flex flex-col justify-between min-h-[250px] md:min-h-[300px]`}>
-                    <div>
-                      <span className="material-symbols-outlined !text-4xl md:!text-5xl text-black/20 mb-4 block">format_quote</span>
-                      <p className="font-hand text-lg md:text-2xl leading-relaxed text-black">
-                        "{f.text}"
-                      </p>
-                    </div>
-                    <div className="mt-8 text-right">
-                      <span className="font-marker text-lg text-black/60 border-t border-black/10 pt-2 inline-block">
-                        - {f.author}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <FeedbackCarousel />
         )}
 
+        <ReviewRequest />
 
         {/* Contact Section */}
         <Contact />

@@ -4,6 +4,8 @@ import Footer from './Footer';
 import Contact from './Contact';
 import { siteConfig } from '../config/site';
 import WhatsAppButton from './WhatsAppButton';
+import Calendar from './Calendar';
+import ReviewRequest from './ReviewRequest';
 import { preLaunchPricing } from '../config/preLaunch';
 
 const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ value, label }) => (
@@ -167,7 +169,7 @@ const UnderConstruction: React.FC = () => {
           <Countdown />
 
           {/* New Pricing Section */}
-          <section className="pt-24 w-full max-w-6xl mx-auto px-6 relative" id="pricing">
+          <section className="pt-24 w-full max-w-6xl mx-auto relative" id="pricing">
             <div className="text-center mb-16">
               <h2 className="font-script text-6xl md:text-7xl text-white mb-4 uppercase tracking-tighter">PREÇOS PRÉ-INAUGURAÇÃO</h2>
               <p className="font-hand text-3xl text-studioOrange">Tá com pressa pra conhecer logo o pico? Chega aí!</p>
@@ -199,7 +201,7 @@ const UnderConstruction: React.FC = () => {
           </section>
 
           {/* Calendar Section */}
-          <section className="py-24 w-full max-w-6xl mx-auto px-6 relative" id="calendar">
+          <section className="py-24 w-full max-w-full mx-auto relative" id="calendar">
             <div className="text-center mb-16">
               <h2 className="font-script text-6xl md:text-7xl text-white mb-4 uppercase tracking-tighter">AGENDA DE ENSAIOS</h2>
               <p className="font-hand text-3xl text-studioOrange">Veja os horários livres e garanta o seu!</p>
@@ -208,19 +210,12 @@ const UnderConstruction: React.FC = () => {
             <div className="relative">
               <div className="tape-piece -top-6 left-1/4 rotate-[-6deg] z-20"></div>
               <div className="w-full border-8 border-white/10 rounded-3xl overflow-hidden shadow-2xl bg-[#1a1a1a] p-1 md:p-3 relative z-10">
-                <div className="aspect-square md:aspect-video w-full min-h-[500px] md:min-h-[600px]">
-                  <iframe
-                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FBahia&showPrint=0&showTitle=0&showTabs=0&mode=WEEK&showTz=0&src=ZXN0dWRpby5sYWI3M0BnbWFpbC5jb20&color=%23ef6c00"
-                    style={{ border: 0, width: '100%', height: '100%' }}
-                    frameBorder="0"
-                    scrolling="no"
-                    title="Google Calendar"
-                    className="rounded-xl"
-                  ></iframe>
-                </div>
+                <Calendar />
               </div>
             </div>
           </section>
+
+          <ReviewRequest />
 
           <div className="mt-8 relative w-full max-w-2xl mx-auto flex flex-col items-center">
             <ConnectWithUs />
