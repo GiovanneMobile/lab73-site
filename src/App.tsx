@@ -4,7 +4,6 @@ import Logo from './components/Logo';
 
 import { headerPhrases } from './config/phrases';
 import { visitedBands } from './config/bands';
-import { feedbacks } from './config/feedbacks';
 import { servicesConfig } from './config/services';
 import Pricing from './components/Pricing';
 import UnderConstruction from './components/UnderConstruction';
