@@ -6,7 +6,7 @@ import { siteConfig } from '../config/site';
 import WhatsAppButton from './WhatsAppButton';
 import Calendar from './Calendar';
 import ReviewRequest from './ReviewRequest';
-import { preLaunchPricing } from '../config/preLaunch';
+import Pricing from './Pricing';
 
 const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ value, label }) => (
   <div className="flex flex-col items-center bg-graphite/5 border-2 border-dashed border-graphite/20 p-4 md:p-6 rounded-xl">
@@ -15,42 +15,6 @@ const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ va
   </div>
 );
 
-const PricingCard: React.FC<{
-  title: string;
-  duration: string;
-  oldPrice?: string;
-  price: string;
-  features?: string[];
-  isPopular?: boolean;
-}> = ({ title, duration, oldPrice, price, features, isPopular }) => (
-  <div className={`relative flex flex-col items-center text-center p-10 md:p-12 bg-[#1a1a1a] border-2 border-dashed border-white/20 rounded-[40px] transition-all duration-300 hover:scale-105 group h-full`}>
-    {isPopular && (
-      <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-studioOrange text-black font-marker px-6 py-4 rotate-2 shadow-2xl z-30 text-xl leading-none uppercase flex flex-col items-center justify-center">
-        <span>MAIS</span>
-        <span>POPULAR</span>
-      </div>
-    )}
-    <h4 className="font-marker text-xl text-studioOrange mb-2 uppercase tracking-widest">{title}</h4>
-    <p className="font-hand text-4xl md:text-5xl text-white mb-6 uppercase tracking-tighter whitespace-nowrap">{duration}</p>
-
-    <div className="mb-6 flex flex-col items-center whitespace-nowrap">
-      {oldPrice && (
-        <span className="font-marker text-3xl md:text-4xl text-white/30 line-through decoration-red-500/50 mb-1">{oldPrice}</span>
-      )}
-      <span className="font-hand text-6xl md:text-7xl text-white tracking-tighter">R$ {price}</span>
-    </div>
-
-    {features && features.length > 0 && (
-      <ul className="font-hand text-lg md:text-xl space-y-4 text-white/80 mt-auto">
-        {features.map((feature, index) => (
-          <li key={index}>
-            {feature}
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
-);
 
 const Countdown: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<{
@@ -168,37 +132,7 @@ const UnderConstruction: React.FC = () => {
 
           <Countdown />
 
-          {/* New Pricing Section */}
-          <section className="pt-24 w-full max-w-6xl mx-auto relative" id="pricing">
-            <div className="text-center mb-16">
-              <h2 className="font-script text-6xl md:text-7xl text-white mb-4 uppercase tracking-tighter">PREÇOS PRÉ-INAUGURAÇÃO</h2>
-              <p className="font-hand text-3xl text-studioOrange">Tá com pressa pra conhecer logo o pico? Chega aí!</p>
-            </div>
-
-            <div className="relative">
-              {/* Decorative tape pieces for the whole section */}
-              <div className="absolute tape-piece rotate-[-45deg] opacity-60 hidden md:block"></div>
-              <div className="absolute -right-12 tape-piece rotate-[45deg] opacity-60 hidden md:block"></div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto">
-                {preLaunchPricing.map((item, index) => (
-                  <PricingCard
-                    key={index}
-                    title={item.title}
-                    duration={item.duration}
-                    oldPrice={`R$ ${item.originalPrice}`}
-                    price={item.price}
-                    isPopular={item.isPopular}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center mt-16">
-              <p className="font-hand text-3xl">* preços promocionais de pré-inauguração.</p>
-              <p className="font-hand text-3xl mt-2">Vão durar <span className="text-studioOrange">SOMENTE ATÉ A INAUGURAÇÃO</span>.</p>
-            </div>
-          </section>
+          <Pricing />
 
           {/* Calendar Section */}
           <section className="py-24 w-full max-w-full mx-auto relative" id="calendar">

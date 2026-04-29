@@ -1,68 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { pricingConfig, OFFER_END_DATE } from '../config/pricing';
-
-const CountdownTimer: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState<{
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  } | null>(null);
-
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const difference = +new Date(OFFER_END_DATE) - +new Date();
-      
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        });
-      } else {
-        setTimeLeft(null);
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  if (!timeLeft) return null;
-
-  return (
-    <div className="mt-8 flex flex-col items-center w-full overflow-hidden">
-      <p className="font-marker text-sm md:text-lg text-studioOrange mb-2">PROMOÇÃO ACABA EM:</p>
-      <div className="flex gap-1 md:gap-4 font-marker text-xl sm:text-3xl md:text-4xl text-black justify-center w-full">
-        <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
-            {timeLeft.days}d
-          </span>
-        </div>
-        <span className="self-center">:</span>
-        <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
-            {timeLeft.hours.toString().padStart(2, '0')}h
-          </span>
-        </div>
-        <span className="self-center">:</span>
-        <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
-            {timeLeft.minutes.toString().padStart(2, '0')}m
-          </span>
-        </div>
-        <span className="self-center">:</span>
-        <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
-            {timeLeft.seconds.toString().padStart(2, '0')}s
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-};
+import React from 'react';
+import CountdownTimer from './CountdownTimer';
+import { pricingConfig } from '../config/pricing';
 
 const Pricing: React.FC = () => {
   return (
@@ -79,11 +17,10 @@ const Pricing: React.FC = () => {
           {pricingConfig.map((item, index) => (
             <div
               key={index}
-              className={`${
-                item.highlight
-                  ? 'bg-studioOrange/20 p-6 border-4 border-double border-studioOrange rotate-[-1deg] flex flex-col gap-4'
-                  : 'flex flex-col md:flex-row justify-between items-center border-b-2 border-black/10 pb-4 gap-4'
-              }`}
+              className={`${item.highlight
+                ? 'bg-studioOrange/20 p-6 border-4 border-double border-studioOrange rotate-[-1deg] flex flex-col gap-4'
+                : 'flex flex-col md:flex-row justify-between items-center border-b-2 border-black/10 pb-4 gap-4'
+                }`}
             >
               <div className={`${item.highlight ? 'w-full' : 'text-center md:text-left flex-1'}`}>
                 <div className={`font-marker text-3xl uppercase ${item.highlight ? 'text-studioOrange w-full mb-1' : ''}`}>
@@ -91,21 +28,20 @@ const Pricing: React.FC = () => {
                 </div>
                 {!item.highlight && <div className="text-black/60">{item.description}</div>}
               </div>
-              
+
               <div className={`${item.highlight ? 'flex flex-col md:flex-row justify-between items-center w-full gap-4' : 'flex items-center gap-4'}`}>
                 {item.highlight && <div className="text-black/60 text-center md:text-left flex-1">{item.description}</div>}
-                
+
                 <div className="flex items-center gap-3 md:gap-4 whitespace-nowrap">
                   {item.originalPrice && (
                     <div className="scribble-strikethrough text-2xl md:text-4xl text-black/40 font-marker">
                       R$ {item.originalPrice}
                     </div>
                   )}
-                  <div className={`font-marker ${
-                    item.highlight 
-                      ? 'text-4xl md:text-6xl bg-white px-2 border-2 border-black rotate-[-2deg]' 
-                      : `text-3xl md:text-5xl text-studioOrange px-2 border border-black/20 ${index % 2 === 0 ? 'bg-yellow-200 rotate-[-5deg]' : 'bg-yellow-100 rotate-[3deg]'}`
-                  }`}>
+                  <div className={`font-marker ${item.highlight
+                    ? 'text-4xl md:text-6xl bg-white px-2 border-2 border-black rotate-[-2deg]'
+                    : `text-3xl md:text-5xl text-studioOrange px-2 border border-black/20 ${index % 2 === 0 ? 'bg-yellow-200 rotate-[-5deg]' : 'bg-yellow-100 rotate-[3deg]'}`
+                    }`}>
                     R$ {item.price}
                   </div>
                 </div>
@@ -116,16 +52,39 @@ const Pricing: React.FC = () => {
 
         <CountdownTimer />
 
-        <div className="flex flex-col md:flex-row items-center mt-12 md:mt-16 gap-8 md:justify-between">
-          <div className="sticky-note bg-yellow-100 rotate-[-1.5deg] max-w-sm relative shadow-lg p-6 flex-1 text-center md:text-left">
-            <div className="tape-piece -top-3 left-1/4 -translate-x-1/2 w-16 h-6 opacity-40"></div>
-            <p className="font-hand text-lg md:text-xl text-black">
-              Esta oferta especial é exclusiva para o seu <span className="underline decoration-studioOrange decoration-2">primeiro ensaio</span>! Não perca tempo!
-            </p>
+        <div className="mt-12 md:mt-16 flex flex-col gap-10">
+          <div className="bg-red-50 border-4 border-dashed border-red-500 p-6 md:p-8 md:pt-10 rotate-[1deg] relative shadow-lg w-full">
+            <div className="tape-piece -top-4 left-1/4 -translate-x-1/2 w-24 h-8 opacity-60"></div>
+            <div className="absolute -top-5 -right-2 md:-top-6 md:-right-6 bg-red-600 text-white font-marker px-4 md:px-6 py-1 md:py-2 rotate-[6deg] text-lg md:text-xl border-4 border-black shadow-xl z-10">
+              ATENÇÃO: REGRAS DOS COMBOS
+            </div>
+
+            <ul className="font-hand text-lg md:text-2xl text-black space-y-4 mt-6 md:mt-2">
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
+                <span>Ao contratar, <strong>todas as datas e horários</strong> dos ensaios devem ser definidos.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
+                <span>O pagamento é feito <strong>50% no primeiro ensaio</strong> e <strong>50% no último ensaio</strong>.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
+                <span>Remarcações <strong>sem custo</strong> podem ser feitas com até <strong>24 horas de antecedência</strong>.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
+                <span>Remarcações feitas com <strong>menos de 24h</strong> custam <strong>30% do valor</strong> de um ensaio base.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
+                <span>Se a banda chegar mas alguém faltar, o ensaio será <strong>dado como realizado</strong> e não <strong>haverá reembolso</strong>.</span>
+              </li>
+            </ul>
           </div>
-          
-          <div className="rotate-[2deg] shrink-0">
-            <span className="inline-block border-2 md:border-4 border-red-600 text-red-600 px-6 md:px-8 py-2 md:py-3 font-marker text-xl md:text-2xl uppercase font-bold shadow-lg">
+
+          <div className="flex justify-center rotate-[-2deg]">
+            <span className="inline-block border-2 md:border-4 border-red-600 bg-white text-red-600 px-8 py-3 font-marker text-2xl md:text-3xl uppercase font-bold shadow-lg">
               Vagas Limitadas
             </span>
           </div>

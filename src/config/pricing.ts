@@ -35,9 +35,9 @@ export const pricingConfig: PricingItem[] = [
   {
     title: "Combo Premium",
     description: "Pacote com 4 sessões de 3 horas cada",
-    price: "360",
+    price: "340",
     originalPrice: "400",
   },
 ];
 
-export const OFFER_END_DATE = "2026-06-01T23:59:59";
+export const OFFER_END_DATE = "2026-04-29T17:55:00";
