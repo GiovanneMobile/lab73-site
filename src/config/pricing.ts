@@ -18,6 +18,7 @@ export const pricingConfig: PricingItem[] = [
     description: "Ideal para 4 pessoas ou mais",
     price: "90",
     originalPrice: "120",
+    highlight: true,
   },
   {
     title: "4 horas",
@@ -30,7 +31,6 @@ export const pricingConfig: PricingItem[] = [
     description: "Pacote com 4 sessões de 2 horas cada",
     price: "300",
     originalPrice: "340",
-    highlight: true,
   },
   {
     title: "Combo Premium",
@@ -40,4 +40,4 @@ export const pricingConfig: PricingItem[] = [
   },
 ];
 
-export const OFFER_END_DATE = "2026-04-29T17:55:00";
+export const OFFER_END_DATE = "2026-04-29T18:24:00";

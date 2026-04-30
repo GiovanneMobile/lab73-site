@@ -132,7 +132,7 @@ const UnderConstruction: React.FC = () => {
 
           <Countdown />
 
-          <Pricing />
+          <Pricing forceOfferActive={true} />
 
           {/* Calendar Section */}
           <section className="py-24 w-full max-w-full mx-auto relative" id="calendar">
