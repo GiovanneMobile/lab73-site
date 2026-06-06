@@ -6,6 +6,16 @@ interface PricingProps {
   forceOfferActive?: boolean;
 }
 
+const renderWithBold = (text: string) => {
+  const parts = text.split(/<strong>(.*?)<\/strong>/g);
+  return parts.map((part, index) => {
+    if (index % 2 === 1) {
+      return <strong key={index} className="text-red-600">{part}</strong>;
+    }
+    return part;
+  });
+};
+
 const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
   const [isOfferActive, setIsOfferActive] = React.useState<boolean>(false);
 
@@ -93,22 +103,12 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
             </div>
 
             <ul className="font-hand text-xl md:text-2xl text-black/90 space-y-4 mt-6 sm:mt-2">
-              <li className="flex items-start gap-3">
-                <span className="text-studioOrange font-marker mt-1 text-2xl">»</span>
-                <span>Agendamentos devem ser feitos com até <strong className="text-red-600">24hs de antecedência</strong> do dia proposto para o ensaio.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-studioOrange font-marker mt-1 text-2xl">»</span>
-                <span>Agendamentos emergenciais (feitos com menos de 24h de antecedência) possuem uma <strong className="text-red-600">taxa de 30%</strong> sobre o valor total do ensaio contratado.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-studioOrange font-marker mt-1 text-2xl">»</span>
-                <span>Remarcações emergenciais (feitas menos de 24h do horário do ensaio) possuem uma <strong className="text-red-600">taxa de 30%</strong> sobre o valor total do ensaio contratado.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-studioOrange font-marker mt-1 text-2xl">»</span>
-                <span>Se precisar de muito tempo para montar e desmontar equipamentos, considere <strong className="text-red-600">contratar um período maior</strong> de ensaio, a fim de não atrapalhar o ensaio de outras bandas.</span>
-              </li>
+              {pricingModule.importantNotices.map((notice, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="text-studioOrange font-marker mt-1 text-2xl">»</span>
+                  <span>{renderWithBold(notice)}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -120,18 +120,12 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
             </div>
 
             <ul className="font-hand text-lg md:text-2xl text-black space-y-4 mt-12 sm:mt-8 md:mt-4">
-              <li className="flex items-start gap-3">
-                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
-                <span>A contratação de combos só é possível com <strong className="text-red-600">todas as datas e horários</strong> dos ensaios determinados.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
-                <span>O pagamento é feito <strong className="text-red-600">50% no primeiro ensaio</strong> e <strong className="text-red-600">50% no último ensaio</strong>.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
-                <span>Se a banda (ou parte dela) faltar a algum dos ensaios, o ensaio será <strong className="text-red-600">dado como realizado</strong> e <strong className="text-red-600">não haverá reembolso</strong>.</span>
-              </li>
+              {pricingModule.comboRules.map((rule, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
+                  <span>{renderWithBold(rule)}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
