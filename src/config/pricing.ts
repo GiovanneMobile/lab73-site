@@ -28,7 +28,7 @@ export const pricingConfig: PricingItem[] = [
   }
 ];
 
-export const OFFER_END_DATE = "2026-07-01T00:00:00";
+export const OFFER_END_DATE = "2025-07-01T00:00:00";
 
 export const importantNotices = [
   "Agendamentos devem ser feitos com até <strong>12hs de antecedência</strong> do dia proposto para o ensaio.",

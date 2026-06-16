@@ -19,7 +19,8 @@ import FeedbackCarousel from './components/FeedbackCarousel';
 import heroImage from './assets/hero.png';
 
 const App: React.FC = () => {
-  const isUnderConstruction = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
+  const isPreview = window.location.hash === '#preview';
+  const isUnderConstruction = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true' && !isPreview;
 
   const randomPhrase = React.useMemo(() => {
 
@@ -34,7 +35,7 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     const hash = window.location.hash;
-    if (hash) {
+    if (hash && hash !== '#preview') {
       const id = decodeURIComponent(hash.substring(1));
       const scrollToElement = () => {
         const element = document.getElementById(id);
