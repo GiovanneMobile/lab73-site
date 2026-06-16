@@ -39,28 +39,28 @@ const CountdownTimer: React.FC = () => {
 
   return (
     <div className="mt-8 flex flex-col items-center w-full overflow-hidden">
-      <p className="font-marker text-sm md:text-lg text-studioOrange mb-2">PROMOÇÃO ACABA EM:</p>
-      <div className="flex gap-1 md:gap-4 font-marker text-xl sm:text-3xl md:text-4xl text-black justify-center w-full">
+      <p className="font-marker text-lg md:text-xl text-studioOrange mb-2">PROMOÇÃO ACABA EM:</p>
+      <div className="flex gap-2 md:gap-4 font-marker text-2xl sm:text-3xl md:text-4xl text-black justify-center w-full">
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+          <span className="bg-zinc-100 min-w-[65px] sm:min-w-[80px] md:min-w-[90px] flex justify-center py-2 border-2 border-black/10 rounded shadow-sm">
             {timeLeft.days}d
           </span>
         </div>
         <span className="self-center">:</span>
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+          <span className="bg-zinc-100 min-w-[65px] sm:min-w-[80px] md:min-w-[90px] flex justify-center py-2 border-2 border-black/10 rounded shadow-sm">
             {timeLeft.hours.toString().padStart(2, '0')}h
           </span>
         </div>
         <span className="self-center">:</span>
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+          <span className="bg-zinc-100 min-w-[65px] sm:min-w-[80px] md:min-w-[90px] flex justify-center py-2 border-2 border-black/10 rounded shadow-sm">
             {timeLeft.minutes.toString().padStart(2, '0')}m
           </span>
         </div>
         <span className="self-center">:</span>
         <div className="flex flex-col items-center">
-          <span className="bg-zinc-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] flex justify-center py-1 border-2 border-black/10 rounded shadow-sm">
+          <span className="bg-zinc-100 min-w-[65px] sm:min-w-[80px] md:min-w-[90px] flex justify-center py-2 border-2 border-black/10 rounded shadow-sm">
             {timeLeft.seconds.toString().padStart(2, '0')}s
           </span>
         </div>

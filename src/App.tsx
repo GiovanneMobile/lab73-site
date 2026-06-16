@@ -32,6 +32,30 @@ const App: React.FC = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  React.useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = decodeURIComponent(hash.substring(1));
+      const scrollToElement = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          return true;
+        }
+        return false;
+      };
+
+      if (!scrollToElement()) {
+        let retries = 0;
+        const interval = setInterval(() => {
+          if (scrollToElement() || retries > 10) {
+            clearInterval(interval);
+          }
+          retries++;
+        }, 100);
+      }
+    }
+  }, []);
 
   if (isUnderConstruction) {
     return <UnderConstruction />;
@@ -58,14 +82,14 @@ const App: React.FC = () => {
             </button>
 
             <nav className={`${isMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row gap-2 lg:gap-4 items-end lg:items-center bg-black/90 lg:bg-transparent p-6 lg:p-0 border-2 border-white/20 lg:border-0 rounded-2xl backdrop-blur-md lg:backdrop-blur-none`}>
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-3deg]" href="#about">Quem Somos</a>
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[2deg]" href="#services">O Que Rola</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-3deg]" href="#quem-somos">Quem Somos</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[2deg]" href="#o-que-rola">O Que Rola</a>
               {siteConfig.features.showGallery && (
-                <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[1deg]" href="#gallery">Fotos</a>
+                <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[1deg]" href="#fotos">Fotos</a>
               )}
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#pricing">Preço$</a>
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[3deg]" href="#calendar">Agenda</a>
-              <a onClick={() => setIsMenuOpen(false)} className="bg-studioOrange text-black font-marker px-6 py-2 rotate-[-1deg] hover:scale-110 transition-transform shadow-lg border-2 border-black mt-4 lg:mt-0" href="#contact">RESERVA!</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#precos">Preço$</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[3deg]" href="#agenda">Agenda</a>
+              <a onClick={() => setIsMenuOpen(false)} className="bg-studioOrange text-black font-marker px-6 py-2 rotate-[-1deg] hover:scale-110 transition-transform shadow-lg border-2 border-black mt-4 lg:mt-0" href="#reserva">RESERVA!</a>
 
             </nav>
           </div>
@@ -96,29 +120,19 @@ const App: React.FC = () => {
                 ELEVE SEU <br />
                 <span className="text-studioOrange italic font-hand decoration-4 underline decoration-white/40">SOM</span>
               </h1>
-              <div className="flex flex-col md:flex-row items-center gap-12 mt-12">
-                <div className="flex-1">
-                  <p className="font-hand text-xl sm:text-2xl md:text-3xl leading-snug">
-                    Primeiro estúdio de ensaio da zona sul de Ilhéus, no coração da cidade. <br />
-                    Escrito à mão, feito com a alma.
-                  </p>
-                </div>
-                <div className="flex-shrink-0 relative">
-                  <div className="relative w-64 h-64 flex flex-col items-center justify-center bg-zinc-900/50 rounded-lg border-2 border-white/10 rotate-3">
-                    <span className="material-symbols-outlined !text-[120px] text-white/40">settings_input_component</span>
-                    <div className="w-32 h-20 bg-zinc-800 border-2 border-white/20 mt-[-20px] rounded flex items-center justify-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-studioOrange animate-pulse"></div>
-                      <div className="w-16 h-1 bg-white/10 rounded"></div>
-                    </div>
-                    <p className="font-hand text-center mt-4 text-studioOrange">"Toca o som!"</p>
-                  </div>
-                </div>
+              <div className="mt-12 text-center">
+                <p className="font-hand text-xl sm:text-2xl md:text-3xl leading-snug">
+                  Primeiro estúdio de ensaio da zona sul de Ilhéus, no coração da cidade. <br />
+                  Escrito à mão, feito com a alma.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-24 md:py-32 px-6" id="about">
+        <section className="py-24 md:py-32 px-6 relative" id="about">
+          <div id="quem-somos" className="absolute top-0"></div>
+          <div id="sobre" className="absolute top-0"></div>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <div className="relative">
               <div className="font-script text-5xl md:text-7xl text-studioOrange mb-8 rotate-[-2deg]">O que é o Lab 73?</div>
@@ -145,7 +159,9 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-24 md:py-32 px-6" id="services">
+        <section className="py-24 md:py-32 px-6 relative" id="services">
+          <div id="o-que-rola" className="absolute top-0"></div>
+          <div id="servicos" className="absolute top-0"></div>
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 md:mb-24">
               <h2 className="font-script text-6xl md:text-8xl inline-block border-b-8 border-studioOrange pb-4 rotate-1 text-center">O QUE ROLA</h2>
@@ -248,7 +264,8 @@ const App: React.FC = () => {
 
 
         {/* Calendar Section */}
-        <section className="py-24 md:py-32 px-6" id="calendar">
+        <section className="py-24 md:py-32 px-6 relative" id="calendar">
+          <div id="agenda" className="absolute top-0"></div>
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="font-script text-6xl md:text-8xl inline-block border-b-8 border-studioOrange pb-4 rotate-1 text-center font-bold uppercase transition-transform hover:scale-105 duration-300">

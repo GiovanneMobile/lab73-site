@@ -77,6 +77,31 @@ const Countdown: React.FC = () => {
 };
 
 const UnderConstruction: React.FC = () => {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = decodeURIComponent(hash.substring(1));
+      const scrollToElement = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          return true;
+        }
+        return false;
+      };
+
+      if (!scrollToElement()) {
+        let retries = 0;
+        const interval = setInterval(() => {
+          if (scrollToElement() || retries > 10) {
+            clearInterval(interval);
+          }
+          retries++;
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <div className="fixed inset-0 z-[1000] bg-graphite overflow-y-auto overflow-x-hidden antialiased selection:bg-studioOrange selection:text-black chalkboard-bg text-white font-body">
       <main className="relative w-full max-w-5xl mx-auto px-6 py-20 min-h-screen flex flex-col items-center">
@@ -136,6 +161,7 @@ const UnderConstruction: React.FC = () => {
 
           {/* Calendar Section */}
           <section className="py-24 w-full max-w-full mx-auto relative" id="calendar">
+            <div id="agenda" className="absolute top-0"></div>
             <div className="text-center mb-16">
               <h2 className="font-script text-6xl md:text-7xl text-white mb-4 uppercase tracking-tighter">AGENDA DE ENSAIOS</h2>
               <p className="font-hand text-3xl text-studioOrange">Veja os horários livres e garanta o seu!</p>

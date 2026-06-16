@@ -35,7 +35,9 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className="py-24 md:py-32" id="contact">
+    <section className="py-24 md:py-32 relative" id="contact">
+      <div id="contato" className="absolute top-0"></div>
+      <div id="reserva" className="absolute top-0"></div>
       <div className="max-w-4xl mx-auto flex flex-col gap-12">
         <div className="w-full border-4 border-dashed border-white/20 p-8 md:p-16 rounded-[40px] relative bg-white/5">
           <form className="grid grid-cols-1 md:grid-cols-2 gap-10" onSubmit={handleSubmit}>

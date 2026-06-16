@@ -43,7 +43,9 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
   }, [forceOfferActive]);
 
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6" id="pricing">
+    <section className="px-4 md:px-6 relative" id="pricing">
+      <div id="precos" className="absolute top-0"></div>
+      <div id="preco" className="absolute top-0"></div>
       <div className="max-w-4xl mx-auto torn-paper notebook-paper p-6 md:p-20 shadow-[10px_10px_0px_#f97316] md:shadow-[20px_20px_0px_#f97316] rotate-1 relative">
         <div className="tape-piece -top-6 left-10 rotate-[-20deg] opacity-60"></div>
         <div className="tape-piece -top-6 right-10 rotate-[20deg] opacity-60"></div>
@@ -96,7 +98,7 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
 
         <CountdownTimer />
 
-        <div className="my-10 md:mb-16 w-full max-w-3xl mx-auto px-2">
+        <div className="my-16 md:mb-16 w-full max-w-3xl mx-auto px-2">
           <div className="bg-orange-50 border-4 border-dashed border-studioOrange p-6 md:p-8 pt-12 rotate-[-1deg] relative shadow-[8px_8px_0px_rgba(249,115,22,0.3)] w-full">
             <div className="absolute -top-5 -left-2 md:-top-6 md:-left-4 bg-studioOrange text-white font-marker px-4 md:px-6 py-1 md:py-2 rotate-[-4deg] text-lg md:text-xl border-4 border-black shadow-xl z-10">
               AVISOS IMPORTANTES
@@ -107,23 +109,6 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
                 <li key={index} className="flex items-start gap-3">
                   <span className="text-studioOrange font-marker mt-1 text-2xl">»</span>
                   <span>{renderWithBold(notice)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-12 md:mt-16 flex flex-col gap-10">
-          <div className="bg-red-50 border-4 border-dashed border-red-500 p-6 md:p-8 md:pt-10 rotate-[1deg] relative shadow-[8px_8px_0px_rgba(239,68,68,0.3)] w-full">
-            <div className="absolute -top-5 -right-2 md:-top-6 md:-right-6 bg-red-600 text-white font-marker px-4 md:px-6 py-1 md:py-2 rotate-[6deg] text-lg md:text-xl border-4 border-black shadow-xl z-10">
-              ATENÇÃO ÀS REGRAS DOS COMBOS
-            </div>
-
-            <ul className="font-hand text-lg md:text-2xl text-black space-y-4 mt-12 sm:mt-8 md:mt-4">
-              {pricingModule.comboRules.map((rule, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="text-red-500 font-marker mt-1 text-2xl">»</span>
-                  <span>{renderWithBold(rule)}</span>
                 </li>
               ))}
             </ul>

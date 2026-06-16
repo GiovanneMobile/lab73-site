@@ -1,3 +1,17 @@
+import img2135 from '../assets/gallery/_MG_2135.jpg';
+import img2163 from '../assets/gallery/_MG_2163.jpg';
+import img2264 from '../assets/gallery/_MG_2264.jpg';
+import img2295 from '../assets/gallery/_MG_2295.jpg';
+import img2322 from '../assets/gallery/_MG_2322.jpg';
+import img2383 from '../assets/gallery/_MG_2383.jpg';
+import img2742 from '../assets/gallery/_MG_2742.jpg';
+import img2755 from '../assets/gallery/_MG_2755.jpg';
+import img2758 from '../assets/gallery/_MG_2758.jpg';
+import img5969 from '../assets/gallery/_MG_5969.jpg';
+import img5971 from '../assets/gallery/_MG_5971.jpg';
+import img6002 from '../assets/gallery/_MG_6002.jpg';
+import img6037 from '../assets/gallery/_MG_6037.jpg';
+
 export interface GalleryImage {
   src: string;
   alt: string;
@@ -7,51 +21,80 @@ export interface GalleryImage {
 
 export const galleryImages: GalleryImage[] = [
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq",
-    alt: "Estúdio Lab 73 - Equipamento",
-    title: "Vibe de Gravação",
-    description: "Sessão noturna no Lab 73"
+    src: img2135,
+    alt: "",
+    title: "",
+    description: ""
   },
   {
-    src: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670&auto=format&fit=crop",
-    alt: "Mesa de som Lab 73",
-    title: "Mixagem Fina",
-    description: "Equipamento Pro para seu som"
+    src: img2163,
+    alt: "",
+    title: "",
+    description: ""
   },
   {
-    src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2670&auto=format&fit=crop",
-    alt: "Microfone Studio",
-    title: "Vocais Cristalinos",
-    description: "Setup de voz premium"
+    src: img2264,
+    alt: "",
+    title: "",
+    description: ""
   },
   {
-    src: "https://images.unsplash.com/photo-1514525253361-bee8d40d040a?q=80&w=2072&auto=format&fit=crop",
-    alt: "Bateria Lab 73",
-    title: "Impacto Rítmico",
-    description: "Batera pesada pronta pro rock"
+    src: img2295,
+    alt: "",
+    title: "",
+    description: ""
   },
   {
-    src: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2670&auto=format&fit=crop",
-    alt: "Guitarra Elétrica",
-    title: "Electric Dreams",
-    description: "Riffs infinitos e timbres matadores"
+    src: img2322,
+    alt: "",
+    title: "",
+    description: ""
   },
   {
-    src: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2669&auto=format&fit=crop",
-    alt: "Console de Áudio",
-    title: "Analog Magic",
-    description: "Preamps quentes e som orgânico"
+    src: img2383,
+    alt: "",
+    description: ""
   },
   {
-    src: "https://images.unsplash.com/photo-1559732782-af0d26f47214?q=80&w=2670&auto=format&fit=crop",
-    alt: "Pedais de Efeito",
-    title: "Tone Search",
-    description: "Exploração de efeitos e texturas"
+    src: img2742,
+    alt: "",
+    title: "",
+    description: ""
   },
   {
-    src: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=2670&auto=format&fit=crop",
-    alt: "Baixo Elétrico",
-    title: "Low End",
-    description: "O groove que sustenta a casa"
+    src: img2755,
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: img2758,
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: img5969,
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: img5971,
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: img6002,
+    alt: "",
+    title: "",
+    description: ""
+  },
+  {
+    src: img6037,
+    alt: "",
+    title: "",
+    description: ""
   }
 ];
