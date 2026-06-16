@@ -22,7 +22,7 @@ export const pricingConfig: PricingItem[] = [
   },
   {
     title: "4 horas",
-    description: "Ideal para passa o setlist inteiro",
+    description: "Ideal para passar o setlist inteiro",
     price: "120",
     originalPrice: "140",
   }
