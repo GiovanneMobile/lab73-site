@@ -97,7 +97,7 @@ const Gallery: React.FC = () => {
           close={() => setIndex(-1)}
           plugins={[Captions, Thumbnails, Zoom, Fullscreen]}
           slides={galleryImages.map(img => ({
-            src: img.src,
+            src: img.fullSrc,
             alt: img.alt,
             title: img.title,
             description: img.description
