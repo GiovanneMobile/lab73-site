@@ -8,6 +8,8 @@ import jacadura from '../assets/bands/logo_jacadura.jpeg';
 import banttublues from '../assets/bands/logo_banttu_blues.jpg';
 import digitalApparatus from '../assets/bands/logo_digital_apparatus_band.png';
 import hellenCruz from '../assets/bands/logo_hellen_cruz.png';
+import retrospecto from '../assets/bands/logo_retrospecto.jpg';
+import terraco from '../assets/bands/logo_terraco.jpg';
 
 export interface Band {
   name: string;
@@ -25,5 +27,9 @@ export const visitedBands: Band[] = [
   { name: 'Jacadura', image: jacadura, url: 'https://www.instagram.com/bandajacadura/' },
   { name: 'Banttu Blues', image: banttublues, url: 'https://www.instagram.com/banttublues/' },
   { name: 'Digital Apparatus', image: digitalApparatus, url: 'https://www.instagram.com/digitalapparatus.banda/' },
-  { name: 'Hellen Cruz', image: hellenCruz, url: 'https://www.instagram.com/ahellencruz/' }
+  { name: 'Hellen Cruz', image: hellenCruz, url: 'https://www.instagram.com/ahellencruz/' },
+  { name: 'Retrospecto', image: retrospecto, url: 'https://www.instagram.com/bandaretrospecto/' },
+  { name: 'Terraço', image: terraco, url: 'https://www.instagram.com/banda_terraco/' },
+  { name: 'Enxaquecas', url: 'https://www.instagram.com/bandaenxaquecas/' },
+  { name: 'Natasha', url: 'https://www.instagram.com/bandanatasha.itabuna/' },
 ];

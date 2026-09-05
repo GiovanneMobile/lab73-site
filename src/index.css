@@ -71,7 +71,7 @@
     border-right: 1px solid rgba(255,255,255,0.3);
   }
   .gig-poster {
-    filter: contrast(1.2) grayscale(1) brightness(0.9);
+    filter: contrast(1.1) brightness(0.95);
     transition: all 0.3s ease;
     border: 1px solid #000;
   }

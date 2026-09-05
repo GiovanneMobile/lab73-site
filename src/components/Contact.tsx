@@ -74,9 +74,9 @@ const Contact: React.FC = () => {
                 onChange={handleChange}
               >
                 <option className="bg-zinc-900">ENSAIAR</option>
-                <option className="bg-zinc-900">GRAVAR</option>
-                <option className="bg-zinc-900">MIX / MASTER</option>
-                <option className="bg-zinc-900">TÁ MOLE (OUTROS)</option>
+                <option className="bg-zinc-900">FOTOS/VÍDEOS</option>
+                <option className="bg-zinc-900">ALUGAR EQUIPAMENTO</option>
+                <option className="bg-zinc-900">OUTROS</option>
               </select>
             </div>
             <div className="flex flex-col gap-2 md:col-span-2">

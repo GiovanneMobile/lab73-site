@@ -62,11 +62,15 @@ const Gallery: React.FC = () => {
                     {/* Random tape pieces for that DIY look */}
                     <div className={`tape-piece ${idx % 3 === 0 ? '-top-4 left-1/4 rotate-12' : idx % 3 === 1 ? '-top-3 right-1/4 -rotate-6' : 'top-1/2 -left-6 rotate-90'} bg-white/40 ring-1 ring-black/5`}></div>
 
-                    <div className="overflow-hidden aspect-[3/4]">
+                    <div className="overflow-hidden aspect-[3/4] relative">
                       <img
                         src={image.src}
                         alt={image.alt}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      {/* Vinheta */}
+                      <div className="absolute inset-0 pointer-events-none transition-opacity duration-500 group-hover:opacity-0"
+                        style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.75) 100%)' }}
                       />
                     </div>
 

@@ -169,12 +169,8 @@ const App: React.FC = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {servicesConfig.map((s, i) => {
-                const isDisabled = (s.title === 'GRAVAÇÃO' && !siteConfig.features.showRecording) ||
-                  (s.title === 'MIXAGEM' && !siteConfig.features.showMixing) ||
-                  (s.title === 'MASTERIZAÇÃO' && !siteConfig.features.showMastering);
-
                 return (
-                  <div key={i} className={`relative transition-transform rotate-[${i % 2 === 0 ? '-2deg' : '3deg'}] hover:rotate-0 group ${isDisabled ? 'card-disabled' : ''}`}>
+                  <div key={i} className={`relative transition-transform rotate-[${i % 2 === 0 ? '-2deg' : '3deg'}] hover:rotate-0 group ${!s.enabled ? 'card-disabled' : ''}`}>
                     {i === 0 && <div className="tape-piece -top-4 -left-4 rotate-[-45deg] scale-75 z-20"></div>}
                     {i === 1 && <div className="tape-piece -top-4 right-0 rotate-[15deg] scale-75 z-20"></div>}
                     {i === 3 && <div className="tape-piece -bottom-4 left-1/4 rotate-2 scale-75 z-20"></div>}
@@ -183,7 +179,7 @@ const App: React.FC = () => {
                       <h3 className="font-marker text-3xl mb-4">{s.title}</h3>
                       <p className="font-hand text-xl">{s.desc}</p>
                       <div className={`absolute bottom-4 right-4 font-marker text-4xl ${s.dark ? 'text-black/20' : 'text-black/10'}`}>{s.num}</div>
-                      {isDisabled && (
+                      {!s.enabled && (
                         <div className="coming-soon-overlay">
                           <div className="coming-soon-banner">EM BREVE</div>
                         </div>
