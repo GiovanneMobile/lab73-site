@@ -1,14 +1,3 @@
-import img2135 from '../assets/gallery/_MG_2135.jpg';
-import img2163 from '../assets/gallery/_MG_2163.jpg';
-import img2295 from '../assets/gallery/_MG_2295.jpg';
-import img2322 from '../assets/gallery/_MG_2322.jpg';
-import img2742 from '../assets/gallery/_MG_2742.jpg';
-import img2755 from '../assets/gallery/_MG_2755.jpg';
-import img2758 from '../assets/gallery/_MG_2758.jpg';
-import img5969 from '../assets/gallery/_MG_5969.jpg';
-import img5971 from '../assets/gallery/_MG_5971.jpg';
-import img6002 from '../assets/gallery/_MG_6002.jpg';
-
 export interface GalleryImage {
   src: string;
   alt: string;
@@ -16,65 +5,18 @@ export interface GalleryImage {
   description?: string;
 }
 
-export const galleryImages: GalleryImage[] = [
-  {
-    src: img2135,
-    alt: "",
+// Importa dinamicamente todas as imagens do diretório (suporta jpg, jpeg, png, gif, webp)
+// O Vite vai resolver as URLs no build e no dev server automaticamente.
+const imageModules = import.meta.glob('../assets/gallery/*.{jpg,jpeg,png,gif,webp}', { 
+  eager: true, 
+  import: 'default' 
+});
+
+export const galleryImages: GalleryImage[] = Object.values(imageModules).map((modulePath) => {
+  return {
+    src: modulePath as string,
+    alt: "Foto da galeria Lab 73",
     title: "",
     description: ""
-  },
-  {
-    src: img2163,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img2295,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img2322,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img2742,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img2755,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img2758,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img5969,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img5971,
-    alt: "",
-    title: "",
-    description: ""
-  },
-  {
-    src: img6002,
-    alt: "",
-    title: "",
-    description: ""
-  },
-];
+  };
+});

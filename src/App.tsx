@@ -16,7 +16,9 @@ import { siteConfig } from './config/site';
 import Calendar from './components/Calendar';
 import ReviewRequest from './components/ReviewRequest';
 import FeedbackCarousel from './components/FeedbackCarousel';
+import AboutUs from './components/AboutUs';
 import heroImage from './assets/hero.png';
+import messImage from './assets/gallery/_MG_8875.jpg';
 
 const App: React.FC = () => {
   const isPreview = window.location.hash === '#preview';
@@ -83,13 +85,14 @@ const App: React.FC = () => {
             </button>
 
             <nav className={`${isMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row gap-2 lg:gap-4 items-end lg:items-center bg-black/90 lg:bg-transparent p-6 lg:p-0 border-2 border-white/20 lg:border-0 rounded-2xl backdrop-blur-md lg:backdrop-blur-none`}>
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-3deg]" href="#quem-somos">Quem Somos</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-3deg]" href="#inicio">Início</a>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[2deg]" href="#o-que-rola">O Que Rola</a>
               {siteConfig.features.showGallery && (
                 <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[1deg]" href="#fotos">Fotos</a>
               )}
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#precos">Preço$</a>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[3deg]" href="#agenda">Agenda</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-2deg]" id="quem-somos-menu" href="#team">Quem Somos</a>
               <a onClick={() => setIsMenuOpen(false)} className="bg-studioOrange text-black font-marker px-6 py-2 rotate-[-1deg] hover:scale-110 transition-transform shadow-lg border-2 border-black mt-4 lg:mt-0" href="#reserva">RESERVA!</a>
 
             </nav>
@@ -123,8 +126,7 @@ const App: React.FC = () => {
               </h1>
               <div className="mt-12 text-center">
                 <p className="font-hand text-xl sm:text-2xl md:text-3xl leading-snug">
-                  Primeiro estúdio de ensaio da zona sul de Ilhéus, no coração da cidade. <br />
-                  Escrito à mão, feito com a alma.
+                  Primeiro estúdio de ensaio da zona sul de Ilhéus.
                 </p>
               </div>
             </div>
@@ -132,7 +134,7 @@ const App: React.FC = () => {
         </section>
 
         <section className="py-24 md:py-32 px-6 relative" id="about">
-          <div id="quem-somos" className="absolute top-0"></div>
+          <div id="inicio" className="absolute top-0"></div>
           <div id="sobre" className="absolute top-0"></div>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <div className="relative">
@@ -153,7 +155,7 @@ const App: React.FC = () => {
             <div className="relative">
               <div className="torn-paper torn-edge-aggressive notebook-paper p-12 rotate-[-3deg] shadow-2xl">
                 <div className="tape-piece -top-4 left-1/3 -rotate-12 opacity-80"></div>
-                <img alt="Studio Gear" className="w-full grayscale brightness-90 border-2 border-black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh-IUHJcDAo7DIGr32m9Ur4bouy3_J6Ypps2OosRWXhk3Tym7Exn5DVZGtmfNF4mMWzWrEJsM5G5aKqAMeh-fo2YpgWWZ6nJywWIswi-hld47gkJKOrvLDkv7MDlUULOIlqlJoKTsidYTb0i8I_x_OqqHXJLreDvibf6pOsr9POqyZg2eZsKLfmE6DqmrOyrMp8fSix1SXhyMIPprXTvbhfYNb6QRoiEe2w-Dyq5JGyYbkEtIItpZOUaiLwzTfvb5K9HbNGZsHxSrq" />
+                <img alt="Bagunça organizada" className="w-full brightness-90 border-2 border-black" src={messImage} />
                 <div className="font-hand text-black text-center mt-8 text-2xl font-bold">Nossa bagunça organizada</div>
               </div>
             </div>
@@ -299,6 +301,9 @@ const App: React.FC = () => {
         {siteConfig.features.showFeedbacks && (
           <FeedbackCarousel />
         )}
+
+        {/* Quem Somos — versão final após feedbacks */}
+        <AboutUs />
 
         <ReviewRequest />
 
