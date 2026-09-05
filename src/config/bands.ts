@@ -10,6 +10,7 @@ import digitalApparatus from '../assets/bands/logo_digital_apparatus_band.png';
 import hellenCruz from '../assets/bands/logo_hellen_cruz.png';
 import retrospecto from '../assets/bands/logo_retrospecto.jpg';
 import terraco from '../assets/bands/logo_terraco.jpg';
+import enxaquecas from '../assets/bands/logo_enxaquecas.jpeg';
 import natasha from '../assets/bands/logo_natasha.jpeg';
 
 export interface Band {
@@ -31,6 +32,6 @@ export const visitedBands: Band[] = [
   { name: 'Hellen Cruz', image: hellenCruz, url: 'https://www.instagram.com/ahellencruz/' },
   { name: 'Retrospecto', image: retrospecto, url: 'https://www.instagram.com/bandaretrospecto/' },
   { name: 'Terraço', image: terraco, url: 'https://www.instagram.com/banda_terraco/' },
-  { name: 'Enxaquecas', url: 'https://www.instagram.com/bandaenxaquecas/' },
+  { name: 'Enxaquecas', image: enxaquecas, url: 'https://www.instagram.com/bandaenxaquecas/' },
   { name: 'Natasha', image: natasha, url: 'https://www.instagram.com/bandanatasha.itabuna/' },
 ];
