@@ -283,7 +283,7 @@ const App: React.FC = () => {
 
             <div className="text-center mt-12">
               <p className="font-hand text-2xl md:text-3xl italic">
-                * Agendamentos devem ser feitos com <span className="text-studioOrange">no mínimo 12 horas de antecedência</span> !
+                * Agendamentos devem ser feitos em <span className="text-studioOrange"> até 12 horas de antecedência</span> !
               </p>
             </div>
           </div>
