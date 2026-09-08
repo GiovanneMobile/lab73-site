@@ -12,6 +12,8 @@ import retrospecto from '../assets/bands/logo_retrospecto.jpg';
 import terraco from '../assets/bands/logo_terraco.jpg';
 import enxaquecas from '../assets/bands/logo_enxaquecas.jpeg';
 import natasha from '../assets/bands/logo_natasha.jpeg';
+import oquadro from '../assets/bands/logo_oquadro.png';
+import paneattone from '../assets/bands/logo_pane_at_tone.jpeg';
 
 export interface Band {
   name: string;
@@ -34,4 +36,6 @@ export const visitedBands: Band[] = [
   { name: 'Terraço', image: terraco, url: 'https://www.instagram.com/banda_terraco/' },
   { name: 'Enxaquecas', image: enxaquecas, url: 'https://www.instagram.com/bandaenxaquecas/' },
   { name: 'Natasha', image: natasha, url: 'https://www.instagram.com/bandanatasha.itabuna/' },
+  { name: 'O Quadro', image: oquadro, url: 'https://www.instagram.com/oquadro/' },
+  { name: 'Pane at Tone', image: paneattone },
 ];
