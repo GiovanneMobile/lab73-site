@@ -6,7 +6,7 @@ import { siteConfig } from '../config/site';
 import WhatsAppButton from './WhatsAppButton';
 import Calendar from './Calendar';
 import ReviewRequest from './ReviewRequest';
-import Pricing from './Pricing';
+import Rehearsal from './Rehearsal';
 
 const CountdownUnit: React.FC<{ value: number | string; label: string }> = ({ value, label }) => (
   <div className="flex flex-col items-center bg-graphite/5 border-2 border-dashed border-graphite/20 p-4 md:p-6 rounded-xl">
@@ -157,7 +157,7 @@ const UnderConstruction: React.FC = () => {
 
           <Countdown />
 
-          <Pricing forceOfferActive={true} />
+          <Rehearsal forceOfferActive={true} />
 
           {/* Calendar Section */}
           <section className="py-24 w-full max-w-full mx-auto relative" id="calendar">

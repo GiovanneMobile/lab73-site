@@ -1,4 +1,4 @@
-export interface PricingItem {
+export interface RehearsalPricingItem {
   title: string;
   description: string;
   originalPrice?: string;
@@ -6,7 +6,7 @@ export interface PricingItem {
   highlight?: boolean;
 }
 
-export const pricingConfig: PricingItem[] = [
+export const rehearsalPricingConfig: RehearsalPricingItem[] = [
   {
     title: "2 horas",
     description: "Ideal para passar o repertório",

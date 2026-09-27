@@ -1,8 +1,8 @@
 import React from 'react';
 import CountdownTimer from './CountdownTimer';
-import * as pricingModule from '../config/pricing';
+import * as rehearsalModule from '../config/rehearsal';
 
-interface PricingProps {
+interface RehearsalProps {
   forceOfferActive?: boolean;
 }
 
@@ -16,7 +16,7 @@ const renderWithBold = (text: string) => {
   });
 };
 
-const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
+const Rehearsal: React.FC<RehearsalProps> = ({ forceOfferActive }) => {
   const [isOfferActive, setIsOfferActive] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -26,7 +26,7 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const offerEndDate = (pricingModule as any).OFFER_END_DATE;
+    const offerEndDate = (rehearsalModule as any).OFFER_END_DATE;
 
     if (!offerEndDate) {
       setIsOfferActive(false);
@@ -58,7 +58,7 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
         </h2>
 
         <div className="space-y-10 font-hand text-2xl text-black relative">
-          {pricingModule.pricingConfig.map((item, index) => {
+          {rehearsalModule.rehearsalPricingConfig.map((item, index) => {
             const displayPrice = isOfferActive ? item.price : (item.originalPrice || item.price);
             const showStrikethrough = isOfferActive && item.originalPrice;
 
@@ -108,7 +108,7 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
             </div>
 
             <ul className="font-hand text-xl md:text-2xl text-black/90 space-y-4 mt-6 sm:mt-2">
-              {pricingModule.importantNotices.map((notice, index) => (
+              {rehearsalModule.importantNotices.map((notice, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <span className="text-studioOrange font-marker mt-1 text-2xl">»</span>
                   <span>{renderWithBold(notice)}</span>
@@ -122,4 +122,4 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
   );
 };
 
-export default Pricing;
+export default Rehearsal;

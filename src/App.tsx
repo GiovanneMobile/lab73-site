@@ -5,7 +5,7 @@ import Logo from './components/Logo';
 import { headerPhrases } from './config/phrases';
 import { visitedBands } from './config/bands';
 import { servicesConfig } from './config/services';
-import Pricing from './components/Pricing';
+import Rehearsal from './components/Rehearsal';
 import Karaoke from './components/Karaoke';
 import UnderConstruction from './components/UnderConstruction';
 import ConnectWithUs from './components/ConnectWithUs';
@@ -218,7 +218,7 @@ const App: React.FC = () => {
                         <div className="w-48 h-48 md:w-72 md:h-72 flex items-center justify-center relative bg-white/5 rounded-lg overflow-hidden border border-white/10">
                           <img
                             alt={band.name}
-                            className="w-full h-full object-contain p-2 md:grayscale md:invert md:brightness-200 md:opacity-60 md:group-hover:filter-none md:group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 chalk-logo"
+                            className="w-full h-full object-contain p-2 group-hover:scale-110 transition-all duration-500"
                             src={band.image}
                           />
                           <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -263,7 +263,7 @@ const App: React.FC = () => {
 
 
         {/* Pricing Section */}
-        <Pricing />
+        <Rehearsal />
 
 
         {/* Karaoke Section */}

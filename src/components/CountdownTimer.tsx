@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as pricingConfig from '../config/pricing';
+import * as rehearsalConfig from '../config/rehearsal';
 
 const CountdownTimer: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<{
@@ -10,7 +10,7 @@ const CountdownTimer: React.FC = () => {
   } | null>(null);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const offerEndDate = (pricingConfig as any).OFFER_END_DATE;
+  const offerEndDate = (rehearsalConfig as any).OFFER_END_DATE;
 
   useEffect(() => {
     if (!offerEndDate) return;
