@@ -6,6 +6,7 @@ import { headerPhrases } from './config/phrases';
 import { visitedBands } from './config/bands';
 import { servicesConfig } from './config/services';
 import Pricing from './components/Pricing';
+import Karaoke from './components/Karaoke';
 import UnderConstruction from './components/UnderConstruction';
 import ConnectWithUs from './components/ConnectWithUs';
 import Footer from './components/Footer';
@@ -90,10 +91,13 @@ const App: React.FC = () => {
               {siteConfig.features.showGallery && (
                 <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[1deg]" href="#fotos">Fotos</a>
               )}
-              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#precos">Preço$</a>
+              <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-1deg]" href="#ensaio">Ensaio</a>
+              {isPreview && (
+                <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[2deg]" href="#karaoke">Karaokê</a>
+              )}
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[3deg]" href="#agenda">Agenda</a>
               <a onClick={() => setIsMenuOpen(false)} className="font-script text-white hover:text-studioOrange text-2xl px-3 py-1 rotate-[-2deg]" id="quem-somos-menu" href="#team">Quem Somos</a>
-              <a onClick={() => setIsMenuOpen(false)} className="bg-studioOrange text-black font-marker px-6 py-2 rotate-[-1deg] hover:scale-110 transition-transform shadow-lg border-2 border-black mt-4 lg:mt-0" href="#reserva">RESERVA!</a>
+              <a onClick={() => setIsMenuOpen(false)} target="_blank" rel="noopener noreferrer" className="bg-studioOrange text-black font-marker px-6 py-2 rotate-[-1deg] hover:scale-110 transition-transform shadow-lg border-2 border-black mt-4 lg:mt-0" href={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('QUERO TOCAAAARRGGH!!')}`}>RESERVA!</a>
 
             </nav>
           </div>
@@ -261,6 +265,11 @@ const App: React.FC = () => {
         {/* Pricing Section */}
         <Pricing />
 
+
+        {/* Karaoke Section */}
+        {isPreview && (
+          < Karaoke />
+        )}
 
         {/* Calendar Section */}
         <section className="py-24 md:py-32 px-6 relative" id="calendar">

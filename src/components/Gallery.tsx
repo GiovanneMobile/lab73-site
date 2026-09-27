@@ -20,7 +20,7 @@ const Gallery: React.FC = () => {
   const [index, setIndex] = useState(-1);
 
   return (
-    <section className="py-24 md:py-32 px-6 overflow-hidden relative" id="gallery">
+    <section className="pt-24 md:pt-32 px-6 overflow-hidden relative" id="gallery">
       <div id="fotos" className="absolute top-0"></div>
       <div id="galeria" className="absolute top-0"></div>
       <div className="max-w-7xl mx-auto">

@@ -43,13 +43,16 @@ const Pricing: React.FC<PricingProps> = ({ forceOfferActive }) => {
   }, [forceOfferActive]);
 
   return (
-    <section className="px-4 md:px-6 relative" id="pricing">
-      <div id="precos" className="absolute top-0"></div>
-      <div id="preco" className="absolute top-0"></div>
+    <section className="pt-24 md:pt-32 px-4 md:px-6 relative" id="ensaio">
+      {/* Header */}
+      <div className="text-center mb-16 relative">
+        <h2 className="font-script text-6xl md:text-8xl text-white rotate-[1deg] leading-none mb-4">
+          ENSAIO
+        </h2>
+      </div>
       <div className="max-w-4xl mx-auto torn-paper notebook-paper p-6 md:p-20 shadow-[10px_10px_0px_#f97316] md:shadow-[20px_20px_0px_#f97316] rotate-1 relative">
         <div className="tape-piece -top-6 left-10 rotate-[-20deg] opacity-60"></div>
         <div className="tape-piece -top-6 right-10 rotate-[20deg] opacity-60"></div>
-
         <h2 className="font-script text-4xl sm:text-5xl md:text-7xl mb-6 md:mb-10 text-center underline decoration-studioOrange decoration-4 md:decoration-8 underline-offset-4 md:underline-offset-8 uppercase text-black">
           TABELA DE PREÇO$
         </h2>
