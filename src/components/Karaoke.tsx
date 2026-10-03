@@ -1,11 +1,6 @@
 import React from 'react';
 import { karaokeConfig } from '../config/karaoke';
 import { siteConfig } from '../config/site';
-import karaokeImg1 from '../assets/karaoke_1.jpg';
-import karaokeImg2 from '../assets/karaoke_2.jpg';
-import karaokeImg3 from '../assets/karaoke_3.jpg';
-
-const karaokeImages = [karaokeImg1, karaokeImg2, karaokeImg3];
 
 const MicIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -31,7 +26,6 @@ const Karaoke: React.FC = () => {
 
   const karaokeWhatsAppUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('QUERO SOLTAR A VOZ NO KARAOKÊ')}`;
 
-  const imgMap = [karaokeImages[0], karaokeImages[1], karaokeImages[2]];
   const rotations = ['-rotate-[3deg]', 'rotate-[2deg]', '-rotate-[2deg]'];
 
   return (
@@ -70,6 +64,11 @@ const Karaoke: React.FC = () => {
               <p className="font-hand text-lg text-black/80 leading-relaxed">
                 {cards.session.description}
               </p>
+              {cards.session.alert && (
+                <div className="mt-4 bg-red-600 text-white font-marker p-2 text-center text-sm border-2 border-black shadow-sm transform -rotate-1">
+                  {cards.session.alert}
+                </div>
+              )}
             </div>
           </div>
 
@@ -95,6 +94,11 @@ const Karaoke: React.FC = () => {
               <p className="font-hand text-lg text-black/80 leading-relaxed">
                 {cards.capacity.description}
               </p>
+              {cards.capacity.alert && (
+                <div className="mt-4 bg-red-600 text-white font-marker p-2 text-center text-sm border-2 border-black shadow-sm transform rotate-1">
+                  {cards.capacity.alert}
+                </div>
+              )}
             </div>
           </div>
 
@@ -118,6 +122,11 @@ const Karaoke: React.FC = () => {
               <p className="font-hand text-lg text-black/80 leading-relaxed">
                 {cards.beer.description}
               </p>
+              {cards.beer.alert && (
+                <div className="mt-4 bg-red-600 text-white font-marker p-2 text-center text-sm border-2 border-black shadow-sm transform -rotate-1">
+                  {cards.beer.alert}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -142,7 +151,7 @@ const Karaoke: React.FC = () => {
                 <div className="tape-piece -top-4 left-1/3 rotate-[-12deg] opacity-75" />
                 <div className="overflow-hidden border-2 border-black bg-black mb-3">
                   <img
-                    src={imgMap[i]}
+                    src={photo.src}
                     alt={photo.alt}
                     className="w-full aspect-[4/3] object-cover brightness-95 contrast-[1.1]"
                   />

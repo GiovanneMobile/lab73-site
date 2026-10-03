@@ -1,3 +1,7 @@
+import karaokeImg1 from '../assets/karaoke/karaoke1.png';
+import karaokeImg2 from '../assets/karaoke/karaoke2.png';
+import karaokeImg3 from '../assets/karaoke/karaoke3.png';
+
 // Configuração da Seção de Karaokê
 // Altere os valores abaixo para ajustar preços e informações da sessão.
 
@@ -22,6 +26,7 @@ export const karaokeConfig = {
       subtitle: 'por hora de cantoria',
       description:
         'Sem cobrança individual abusiva. Cante seu repertório favorito com acústica tratada pelo tempo que quiser.',
+      alert: '',
     },
     capacity: {
       badge: 'ESPAÇO PRIVATIVO',
@@ -29,32 +34,34 @@ export const karaokeConfig = {
       subtitle: 'conforto total na sala isolada',
       description:
         'Ambiente 100% fechado só pra vocês. Sofá vintage, iluminação aconchegante e zero vergonha alheia de plateia desconhecida.',
+      alert: '',
     },
     beer: {
       badge: 'BAR DO ESTÚDIO',
-      title: 'BEBIDA GELADA',
+      title: 'BEBIDA GELADA A PARTIR DE',
       subtitle: 'Cerveja lata geladíssima',
       description:
-        'Frigobar abastecido dentro da sala. Cerveja trincando a preço justo pra afinar a garganta antes do refrão.',
+        'Frigobar abastecido com cerveja e energético pra afinar a garganta antes do refrão.',
+      alert: 'VENDA PROIBIDA PARA MENORES DE 18 ANOS (LEI Nº 8.069/1990)',
     },
   },
 
   /** Fotos das sessões (Polaroid gallery) */
   photos: [
     {
-      src: '/src/assets/karaoke_1.jpg',
+      src: karaokeImg1,
       alt: '',
-      caption: 'Microfones',
+      caption: '',
     },
     {
-      src: '/src/assets/karaoke_2.jpg',
+      src: karaokeImg2,
       alt: '',
-      caption: 'Frigobar',
+      caption: '',
     },
     {
-      src: '/src/assets/karaoke_3.jpg',
+      src: karaokeImg3,
       alt: '',
-      caption: 'Projetor e Tela',
+      caption: '',
     },
   ],
 };
